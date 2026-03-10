@@ -4,156 +4,559 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Trending Today</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* OKLCH-based color system */
+            --bg-base: oklch(12% 0.01 260);
+            --bg-elevated: oklch(16% 0.01 260);
+            --bg-card: oklch(20% 0.012 260);
+            --fg-primary: oklch(95% 0.01 260);
+            --fg-secondary: oklch(70% 0.02 260);
+            --fg-muted: oklch(50% 0.02 260);
+            --accent: oklch(70% 0.18 30);
+            --accent-glow: oklch(70% 0.18 30 / 0.15);
+            --rank-gold: oklch(78% 0.14 85);
+            --rank-silver: oklch(72% 0.01 260);
+            --rank-bronze: oklch(65% 0.12 55);
+            --border: oklch(28% 0.015 260);
+            --positive: oklch(72% 0.19 145);
+            
+            /* Spacing system (8px base) */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 40px;
+            --space-2xl: 64px;
+            
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Motion */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 300ms;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: var(--font-body);
+            background: var(--bg-base);
+            color: var(--fg-primary);
             min-height: 100vh;
-            padding: 40px 20px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 700px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 {
-            color: white;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
+
+        /* Subtle background texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-glow), transparent),
+                radial-gradient(circle at 20% 80%, oklch(60% 0.08 260 / 0.08), transparent 40%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .header p { color: rgba(255,255,255,0.9); font-size: 14px; }
-        .repo-card {
-            background: white;
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
         }
-        .repo-card.gold { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
-        .repo-card.silver { background: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 100%); }
-        .repo-card.bronze { background: linear-gradient(135deg, #CD7F32 0%, #B8860B 100%); }
-        .repo-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 6px;
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            animation: fadeIn var(--duration-normal) var(--ease-out);
         }
-        .repo-card.gold .repo-title,
-        .repo-card.silver .repo-title,
-        .repo-card.bronze .repo-title { color: white; }
-        .repo-desc {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 10px;
-        }
-        .repo-card.gold .repo-desc,
-        .repo-card.silver .repo-desc,
-        .repo-card.bronze .repo-desc { color: rgba(255,255,255,0.9); }
-        .repo-stats {
-            display: flex;
-            gap: 12px;
+
+        .header-label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
             font-size: 12px;
-            color: #888;
+            font-weight: 500;
+            color: var(--fg-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-md);
         }
-        .repo-card.gold .repo-stats,
-        .repo-card.silver .repo-stats,
-        .repo-card.bronze .repo-stats { color: rgba(255,255,255,0.85); }
+
+        .header-label::before,
+        .header-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 6vw, 40px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, var(--fg-primary) 0%, var(--fg-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-date {
+            font-size: 14px;
+            color: var(--fg-muted);
+        }
+
+        /* Repo list */
+        .repo-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        /* Repo card */
+        .repo-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            transition: 
+                transform var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+            animation: slideIn var(--duration-normal) var(--ease-out) backwards;
+        }
+
+        .repo-card:nth-child(1) { animation-delay: 50ms; }
+        .repo-card:nth-child(2) { animation-delay: 100ms; }
+        .repo-card:nth-child(3) { animation-delay: 150ms; }
+        .repo-card:nth-child(4) { animation-delay: 200ms; }
+        .repo-card:nth-child(5) { animation-delay: 250ms; }
+        .repo-card:nth-child(6) { animation-delay: 300ms; }
+        .repo-card:nth-child(7) { animation-delay: 350ms; }
+        .repo-card:nth-child(8) { animation-delay: 400ms; }
+
+        .repo-card:hover {
+            transform: translateY(-2px);
+            border-color: oklch(35% 0.02 260);
+            background: var(--bg-elevated);
+        }
+
+        .repo-card:focus-within {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Rank badges */
+        .repo-card.rank-1 { border-left: 3px solid var(--rank-gold); }
+        .repo-card.rank-2 { border-left: 3px solid var(--rank-silver); }
+        .repo-card.rank-3 { border-left: 3px solid var(--rank-bronze); }
+
+        .repo-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .rank-badge {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 6px;
+            background: var(--bg-elevated);
+            color: var(--fg-muted);
+        }
+
+        .rank-1 .rank-badge {
+            background: var(--rank-gold);
+            color: oklch(20% 0.02 85);
+        }
+
+        .rank-2 .rank-badge {
+            background: var(--rank-silver);
+            color: oklch(30% 0.01 260);
+        }
+
+        .rank-3 .rank-badge {
+            background: var(--rank-bronze);
+            color: oklch(25% 0.02 55);
+        }
+
+        .repo-title {
+            font-family: var(--font-display);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--fg-primary);
+            text-decoration: none;
+            transition: color var(--duration-fast) var(--ease-out);
+            word-break: break-word;
+        }
+
+        .repo-title:hover {
+            color: var(--accent);
+        }
+
+        .repo-title:focus {
+            outline: none;
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            text-underline-offset: 3px;
+        }
+
+        .repo-desc {
+            font-size: 13px;
+            color: var(--fg-secondary);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-md);
+            font-size: 12px;
+        }
+
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--fg-muted);
+        }
+
+        .meta-item.lang {
+            color: var(--fg-secondary);
+        }
+
+        .meta-item.lang::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.7;
+        }
+
         .stars-today {
-            background: #ff4757;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            background: oklch(72% 0.19 145 / 0.12);
+            color: var(--positive);
+            border-radius: 6px;
             font-weight: 600;
         }
-        .repo-card.gold .stars-today,
-        .repo-card.silver .stars-today,
-        .repo-card.bronze .stars-today { background: rgba(0,0,0,0.2); }
+
+        .stars-today svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--fg-muted);
+        }
+
+        .footer a {
+            color: var(--fg-secondary);
+            text-decoration: none;
+            transition: color var(--duration-fast);
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--space-lg) var(--space-md);
+            }
+
+            .repo-card {
+                padding: var(--space-md);
+            }
+
+            .repo-meta {
+                gap: var(--space-sm);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🔥 GitHub Trending</h1>
-            <p>2026-03-09 Today's Top Repositories</p>
-        </div>
+        <header class="header">
+            <div class="header-label">Daily Digest</div>
+            <h1>GitHub Trending</h1>
+            <p class="header-date">2026-03-10</p>
+        </header>
 
-        <div class="repo-card gold">
-            <div class="repo-title">🥇 openclaw/openclaw</div>
-            <div class="repo-desc">你自己的 AI 助手。任何系统。任何平台。🦞</div>
-            <div class="repo-stats">
-                <span>TypeScript</span>
-                <span>⭐ 287,959</span>
-                <span class="stars-today">+9,123 🔥</span>
-            </div>
-        </div>
+        <main class="repo-list">
+            <article class="repo-card rank-1">
+                <div class="repo-header">
+                    <span class="rank-badge">1</span>
+                    <a href="https://github.com/msitarzewski/agency-agents" class="repo-title" target="_blank" rel="noopener">
+                        msitarzewski/agency-agents
+                    </a>
+                </div>
+                <p class="repo-desc">A complete AI agency at your fingertips — From frontend wizards to Reddit community ninjas, specialized experts with personality.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Shell</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        19,264
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +4,415
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card silver">
-            <div class="repo-title">🥈 msitarzewski/agency-agents</div>
-            <div class="repo-desc">完整的 AI 代理公司 - 从前端到社区运营的专家级 agent</div>
-            <div class="repo-stats">
-                <span>Shell</span>
-                <span>⭐ 15,904</span>
-                <span class="stars-today">+4,297</span>
-            </div>
-        </div>
+            <article class="repo-card rank-2">
+                <div class="repo-header">
+                    <span class="rank-badge">2</span>
+                    <a href="https://github.com/666ghj/MiroFish" class="repo-title" target="_blank" rel="noopener">
+                        666ghj/MiroFish
+                    </a>
+                </div>
+                <p class="repo-desc">简洁通用的群体智能引擎，预测万物。A Simple and Universal Swarm Intelligence Engine.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Python</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        10,881
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +2,294
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card bronze">
-            <div class="repo-title">🥉 666ghj/MiroFish</div>
-            <div class="repo-desc">简洁通用的群体智能引擎，预测万物</div>
-            <div class="repo-stats">
-                <span>Python</span>
-                <span>⭐ 9,202</span>
-                <span class="stars-today">+2,222</span>
-            </div>
-        </div>
+            <article class="repo-card rank-3">
+                <div class="repo-header">
+                    <span class="rank-badge">3</span>
+                    <a href="https://github.com/GoogleCloudPlatform/generative-ai" class="repo-title" target="_blank" rel="noopener">
+                        GoogleCloudPlatform/generative-ai
+                    </a>
+                </div>
+                <p class="repo-desc">Sample code and notebooks for Generative AI on Google Cloud, with Gemini on Vertex AI.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Jupyter</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        15,279
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +1,282
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card">
-            <div class="repo-title">4. GoogleCloudPlatform/generative-ai</div>
-            <div class="repo-desc">Google Cloud 上的生成式 AI 示例代码和 notebooks</div>
-            <div class="repo-stats">
-                <span>Jupyter</span>
-                <span>⭐ 15,053</span>
-                <span class="stars-today">+1,291</span>
-            </div>
-        </div>
+            <article class="repo-card">
+                <div class="repo-header">
+                    <span class="rank-badge">4</span>
+                    <a href="https://github.com/pbakaus/impeccable" class="repo-title" target="_blank" rel="noopener">
+                        pbakaus/impeccable
+                    </a>
+                </div>
+                <p class="repo-desc">The design language that makes your AI harness better at design. 17 commands and curated anti-patterns.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">JavaScript</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        2,969
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +1,288
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card">
-            <div class="repo-title">5. pbakaus/impeccable</div>
-            <div class="repo-desc">让你的 AI 更擅长设计的设计语言</div>
-            <div class="repo-stats">
-                <span>JavaScript</span>
-                <span>⭐ 2,575</span>
-                <span class="stars-today">+1,291</span>
-            </div>
-        </div>
+            <article class="repo-card">
+                <div class="repo-header">
+                    <span class="rank-badge">5</span>
+                    <a href="https://github.com/666ghj/BettaFish" class="repo-title" target="_blank" rel="noopener">
+                        666ghj/BettaFish
+                    </a>
+                </div>
+                <p class="repo-desc">微舆：人人可用的多 Agent 舆情分析助手，打破信息茧房，还原舆情原貌，预测未来走向。</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Python</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        37,146
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +509
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card">
-            <div class="repo-title">6. 666ghj/BettaFish</div>
-            <div class="repo-desc">微舆：人人可用的多 Agent 舆情分析助手</div>
-            <div class="repo-stats">
-                <span>Python</span>
-                <span>⭐ 37,146</span>
-                <span class="stars-today">+509</span>
-            </div>
-        </div>
+            <article class="repo-card">
+                <div class="repo-header">
+                    <span class="rank-badge">6</span>
+                    <a href="https://github.com/NousResearch/hermes-agent" class="repo-title" target="_blank" rel="noopener">
+                        NousResearch/hermes-agent
+                    </a>
+                </div>
+                <p class="repo-desc">The agent that grows with you.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Python</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        2,971
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +377
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card">
-            <div class="repo-title">7. alibaba/page-agent</div>
-            <div class="repo-desc">阿里巴巴的页面内 GUI agent</div>
-            <div class="repo-stats">
-                <span>TypeScript</span>
-                <span>⭐ 2,232</span>
-                <span class="stars-today">+715</span>
-            </div>
-        </div>
+            <article class="repo-card">
+                <div class="repo-header">
+                    <span class="rank-badge">7</span>
+                    <a href="https://github.com/alibaba/page-agent" class="repo-title" target="_blank" rel="noopener">
+                        alibaba/page-agent
+                    </a>
+                </div>
+                <p class="repo-desc">JavaScript in-page GUI agent. Control web interfaces with natural language.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">TypeScript</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        2,564
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +465
+                    </span>
+                </div>
+            </article>
 
-        <div class="repo-card">
-            <div class="repo-title">8. karpathy/nanochat</div>
-            <div class="repo-desc">100 美元能买到的最好的 ChatGPT</div>
-            <div class="repo-stats">
-                <span>Python</span>
-                <span>⭐ 45,242</span>
-                <span class="stars-today">+332</span>
-            </div>
-        </div>
+            <article class="repo-card">
+                <div class="repo-header">
+                    <span class="rank-badge">8</span>
+                    <a href="https://github.com/teng-lin/notebooklm-py" class="repo-title" target="_blank" rel="noopener">
+                        teng-lin/notebooklm-py
+                    </a>
+                </div>
+                <p class="repo-desc">Unofficial Python API and agentic skill for Google NotebookLM. Full programmatic access via Python and CLI.</p>
+                <div class="repo-meta">
+                    <span class="meta-item lang">Python</span>
+                    <span class="meta-item">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                        </svg>
+                        4,238
+                    </span>
+                    <span class="stars-today">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+                        </svg>
+                        +457
+                    </span>
+                </div>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p>Designed with <a href="https://impeccable.style" target="_blank" rel="noopener">Impeccable</a> principles</p>
+        </footer>
     </div>
 </body>
 </html>
