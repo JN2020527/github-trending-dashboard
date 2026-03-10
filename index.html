@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Trending Today</title>
+    <title>GitHub Trending</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light theme */
             --bg-base: oklch(97% 0.005 260);
             --bg-card: oklch(100% 0 0);
             --fg-primary: oklch(20% 0.02 260);
@@ -22,24 +21,14 @@
             --border: oklch(90% 0.01 260);
             --positive: oklch(50% 0.18 145);
             --section-label: oklch(50% 0.15 25);
-            
-            --space-xs: 4px;
-            --space-sm: 8px;
-            --space-md: 16px;
-            --space-lg: 24px;
-            --space-xl: 40px;
-            --space-2xl: 64px;
-            
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px;
             --font-display: 'Space Grotesk', sans-serif;
             --font-body: 'DM Sans', sans-serif;
-            
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-            --duration-fast: 150ms;
-            --duration-normal: 300ms;
+            --duration-fast: 150ms; --duration-normal: 300ms;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: var(--font-body);
             background: var(--bg-base);
@@ -48,20 +37,17 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-
         .container {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
             padding: var(--space-xl) var(--space-lg);
         }
-
         .header {
             text-align: center;
             margin-bottom: var(--space-2xl);
             animation: fadeIn var(--duration-normal) var(--ease-out);
         }
-
         .header-label {
             display: inline-flex;
             align-items: center;
@@ -73,15 +59,12 @@
             letter-spacing: 0.1em;
             margin-bottom: var(--space-md);
         }
-
-        .header-label::before,
-        .header-label::after {
+        .header-label::before, .header-label::after {
             content: '';
             width: 32px;
             height: 1px;
             background: var(--border);
         }
-
         .header h1 {
             font-family: var(--font-display);
             font-size: clamp(32px, 7vw, 48px);
@@ -90,33 +73,79 @@
             margin-bottom: var(--space-sm);
             color: var(--fg-primary);
         }
-
-        .header-date {
-            font-size: 14px;
+        .date-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .date-nav-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--duration-fast) var(--ease-out);
             color: var(--fg-muted);
         }
-
+        .date-nav-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .date-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .date-nav-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .date-picker-wrapper {
+            position: relative;
+        }
+        .date-picker {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--fg-primary);
+            cursor: pointer;
+            transition: border-color var(--duration-fast) var(--ease-out);
+        }
+        .date-picker:hover, .date-picker:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        .loading {
+            text-align: center;
+            padding: var(--space-2xl);
+            color: var(--fg-muted);
+        }
         .repo-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-md);
         }
-
         .repo-card {
             position: relative;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: var(--space-md);
-            transition: 
-                transform var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out),
-                box-shadow var(--duration-fast) var(--ease-out);
+            transition: transform var(--duration-fast) var(--ease-out),
+                        border-color var(--duration-fast) var(--ease-out),
+                        box-shadow var(--duration-fast) var(--ease-out);
             animation: slideIn var(--duration-normal) var(--ease-out) backwards;
             display: flex;
             flex-direction: column;
         }
-
         .repo-card:nth-child(1) { animation-delay: 50ms; }
         .repo-card:nth-child(2) { animation-delay: 100ms; }
         .repo-card:nth-child(3) { animation-delay: 150ms; }
@@ -125,29 +154,18 @@
         .repo-card:nth-child(6) { animation-delay: 300ms; }
         .repo-card:nth-child(7) { animation-delay: 350ms; }
         .repo-card:nth-child(8) { animation-delay: 400ms; }
-
         .repo-card:hover {
             transform: translateY(-2px);
             border-color: oklch(80% 0.02 260);
             box-shadow: 0 4px 20px oklch(0% 0 0 / 0.08);
         }
-
-        .repo-card:focus-within {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        .repo-card.rank-1 { 
+        .repo-card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .repo-card.rank-1 {
             border-left: 4px solid var(--rank-gold);
             background: linear-gradient(135deg, oklch(98% 0.02 85), var(--bg-card));
         }
-        .repo-card.rank-2 { 
-            border-left: 4px solid var(--rank-silver); 
-        }
-        .repo-card.rank-3 { 
-            border-left: 4px solid var(--rank-bronze); 
-        }
-
+        .repo-card.rank-2 { border-left: 4px solid var(--rank-silver); }
+        .repo-card.rank-3 { border-left: 4px solid var(--rank-bronze); }
         .repo-header {
             display: flex;
             align-items: center;
@@ -156,7 +174,6 @@
             padding-bottom: var(--space-sm);
             border-bottom: 1px solid var(--border);
         }
-
         .rank-badge {
             flex-shrink: 0;
             width: 36px;
@@ -171,28 +188,14 @@
             background: oklch(94% 0.005 260);
             color: var(--fg-muted);
         }
-
         .rank-1 .rank-badge {
             background: var(--rank-gold);
             color: oklch(30% 0.02 85);
             box-shadow: 0 2px 8px oklch(75% 0.15 85 / 0.25);
         }
-
-        .rank-2 .rank-badge {
-            background: var(--rank-silver);
-            color: oklch(35% 0.01 260);
-        }
-
-        .rank-3 .rank-badge {
-            background: var(--rank-bronze);
-            color: oklch(30% 0.02 55);
-        }
-
-        .repo-title-group {
-            flex: 1;
-            min-width: 0;
-        }
-
+        .rank-2 .rank-badge { background: var(--rank-silver); color: oklch(35% 0.01 260); }
+        .rank-3 .rank-badge { background: var(--rank-bronze); color: oklch(30% 0.02 55); }
+        .repo-title-group { flex: 1; min-width: 0; }
         .repo-title {
             font-family: var(--font-display);
             font-size: 17px;
@@ -203,18 +206,13 @@
             word-break: break-word;
             display: block;
         }
-
-        .repo-title:hover {
-            color: var(--accent);
-        }
-
+        .repo-title:hover { color: var(--accent); }
         .repo-title:focus {
             outline: none;
             text-decoration: underline;
             text-decoration-color: var(--accent);
             text-underline-offset: 3px;
         }
-
         .repo-meta {
             display: flex;
             flex-wrap: wrap;
@@ -223,19 +221,13 @@
             font-size: 12px;
             margin-top: 4px;
         }
-
         .meta-item {
             display: inline-flex;
             align-items: center;
             gap: 4px;
             color: var(--fg-muted);
         }
-
-        .meta-item.lang {
-            color: var(--fg-secondary);
-            font-weight: 500;
-        }
-
+        .meta-item.lang { color: var(--fg-secondary); font-weight: 500; }
         .meta-item.lang::before {
             content: '';
             width: 8px;
@@ -244,7 +236,6 @@
             background: var(--accent);
             opacity: 0.8;
         }
-
         .stars-today {
             display: inline-flex;
             align-items: center;
@@ -256,18 +247,8 @@
             font-weight: 600;
             font-size: 11px;
         }
-
-        .repo-content {
-            display: grid;
-            gap: var(--space-sm);
-            flex: 1;
-        }
-
-        .content-section {
-            display: flex;
-            gap: var(--space-sm);
-        }
-
+        .repo-content { display: grid; gap: var(--space-sm); flex: 1; }
+        .content-section { display: flex; gap: var(--space-sm); }
         .section-label {
             flex-shrink: 0;
             width: 64px;
@@ -278,14 +259,12 @@
             letter-spacing: 0.05em;
             padding-top: 2px;
         }
-
         .section-content {
             flex: 1;
             font-size: 13px;
             color: var(--fg-secondary);
             line-height: 1.6;
         }
-
         .footer {
             text-align: center;
             margin-top: var(--space-2xl);
@@ -294,78 +273,33 @@
             font-size: 12px;
             color: var(--fg-muted);
         }
-
         .footer a {
             color: var(--fg-secondary);
             text-decoration: none;
             transition: color var(--duration-fast);
         }
-
-        .footer a:hover {
-            color: var(--accent);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        .footer a:hover { color: var(--accent); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
             }
         }
-
         @media (max-width: 600px) {
-            .container {
-                padding: var(--space-lg) var(--space-md);
-            }
-
-            .repo-card {
-                padding: var(--space-md);
-            }
-
-            .content-section {
-                flex-direction: column;
-                gap: var(--space-xs);
-            }
-
-            .section-label {
-                width: auto;
-            }
-
-            .repo-header {
-                flex-wrap: wrap;
-            }
-
-            .repo-list {
-                grid-template-columns: 1fr;
-            }
+            .container { padding: var(--space-lg) var(--space-md); }
+            .repo-card { padding: var(--space-md); }
+            .content-section { flex-direction: column; gap: var(--space-xs); }
+            .section-label { width: auto; }
+            .repo-header { flex-wrap: wrap; }
+            .repo-list { grid-template-columns: 1fr; }
         }
-
-        @media (max-width: 900px) {
-            .repo-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .repo-list {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+        @media (max-width: 900px) { .repo-list { grid-template-columns: 1fr; } }
+        @media (min-width: 1400px) { .repo-list { grid-template-columns: repeat(3, 1fr); } }
     </style>
 </head>
 <body>
@@ -373,254 +307,184 @@
         <header class="header">
             <div class="header-label">Daily Digest</div>
             <h1>GitHub Trending</h1>
-            <p class="header-date">2026-03-10</p>
+            <div class="date-selector">
+                <button class="date-nav-btn" id="prevDay" title="前一天">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="date-picker-wrapper">
+                    <select class="date-picker" id="datePicker"></select>
+                </div>
+                <button class="date-nav-btn" id="nextDay" title="后一天">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
         </header>
-
-        <main class="repo-list">
-            <article class="repo-card rank-1">
-                <div class="repo-header">
-                    <span class="rank-badge">1</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/msitarzewski/agency-agents" class="repo-title" target="_blank" rel="noopener">
-                            msitarzewski/agency-agents
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Shell</span>
-                            <span class="meta-item">⭐ 19,264</span>
-                            <span class="stars-today">+4,415 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">61 个专业 AI Agent 的开源集合，覆盖工程、设计、营销、产品等 9 大领域。每个 Agent 都有独立人格、专属工作流、代码示例和成功指标。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">适合需要专业 AI 协作的开发者和团队。当你发现通用提示词太泛、无法产出专业交付物时，可以召唤对应领域的专家 Agent。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">深度专业化的 Agent 设计：Frontend Developer 懂 React 性能优化，Reddit Community Builder 懂社区运营礼仪，每个 Agent 都有真实项目验证过的工作流。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card rank-2">
-                <div class="repo-header">
-                    <span class="rank-badge">2</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/666ghj/MiroFish" class="repo-title" target="_blank" rel="noopener">
-                            666ghj/MiroFish
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Python</span>
-                            <span class="meta-item">⭐ 10,881</span>
-                            <span class="stars-today">+2,294 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">基于多智能体技术的 AI 预测引擎。上传种子材料（新闻、报告、小说），自动构建平行数字世界，成千上万智能体在其中交互演化。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">决策者需要零风险试错环境：政策推演、公关策略、舆情预测。普通用户也可以推演小说结局或探索脑洞。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">GraphRAG 构建知识图谱 → 生成独立人格智能体 → 双平台并行模拟 → ReportAgent 生成可交互的预测报告。支持与模拟世界中任意角色对话。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card rank-3">
-                <div class="repo-header">
-                    <span class="rank-badge">3</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/GoogleCloudPlatform/generative-ai" class="repo-title" target="_blank" rel="noopener">
-                            GoogleCloudPlatform/generative-ai
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Jupyter</span>
-                            <span class="meta-item">⭐ 15,279</span>
-                            <span class="stars-today">+1,282 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">Google Cloud 生成式 AI 官方示例仓库。包含 notebooks、代码示例、示例应用，演示如何在 Vertex AI 上使用 Gemini 等模型。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">开发者想快速上手 Google Cloud 的生成式 AI 能力，但不知道从哪里开始。需要从入门到进阶的完整学习路径。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">按场景分类的示例库：Gemini 入门、RAG/ grounding、图像生成 (Imagen)、语音 (Chirp)、搜索 (Vertex AI Search)。每个都有可运行的 notebook。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card">
-                <div class="repo-header">
-                    <span class="rank-badge">4</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/pbakaus/impeccable" class="repo-title" target="_blank" rel="noopener">
-                            pbakaus/impeccable
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">JavaScript</span>
-                            <span class="meta-item">⭐ 2,969</span>
-                            <span class="stars-today">+1,288 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">让 AI 摆脱"模板感"的设计语言系统。7 个专业参考文件 + 17 个命令 + 精选反模式清单。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">AI 生成的前端设计总是千篇一律：Inter 字体、紫色渐变、卡片嵌套卡片。你需要 AI 懂真正的设计原则，而不是套模板。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">覆盖排版、色彩、空间、动效、交互、响应式、UX 文案 7 大领域。命令如 /audit 审查质量、/polish 打磨细节、/distill 精简复杂度。支持 Claude Code、Cursor、Codex 等工具。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card">
-                <div class="repo-header">
-                    <span class="rank-badge">5</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/666ghj/BettaFish" class="repo-title" target="_blank" rel="noopener">
-                            666ghj/BettaFish
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Python</span>
-                            <span class="meta-item">⭐ 37,146</span>
-                            <span class="stars-today">+509 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">多 Agent 舆情分析系统"微舆"。用户用自然语言提问，4 类 Agent 协作分析国内外 30+ 社媒平台，自动生成深度报告。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">品牌方需要了解舆情风向、分析用户反馈、追踪热点事件。传统方式要人工收集多个平台数据，效率低下且容易遗漏。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">QueryAgent 广度搜索 + MediaAgent 多模态理解 + InsightAgent 私有数据挖掘 + ReportAgent 报告生成。引入"论坛"辩论机制避免单一视角，支持自定义模板。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card">
-                <div class="repo-header">
-                    <span class="rank-badge">6</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/NousResearch/hermes-agent" class="repo-title" target="_blank" rel="noopener">
-                            NousResearch/hermes-agent
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Python</span>
-                            <span class="meta-item">⭐ 2,971</span>
-                            <span class="stars-today">+377 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">自我进化的 AI Agent。内置完整学习循环：从经验创建技能、使用中改进技能、主动持久化记忆、搜索历史对话。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">你需要一个真正"认识你"的 Agent。不是每次对话都从零开始，而是能记住你的偏好、习惯、项目，越用越顺手。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">Honcho 方言式用户建模 + Agent 自主创建技能 + FTS5 跨会话搜索 + 定时任务调度。支持 Telegram/Discord/Slack 等多平台接入，可在 $5 VPS 上运行。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card">
-                <div class="repo-header">
-                    <span class="rank-badge">7</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/alibaba/page-agent" class="repo-title" target="_blank" rel="noopener">
-                            alibaba/page-agent
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">TypeScript</span>
-                            <span class="meta-item">⭐ 2,564</span>
-                            <span class="stars-today">+465 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">阿里巴巴开源的页内 GUI Agent。纯 JavaScript 实现，用自然语言控制网页界面，无需浏览器插件、Python 或无头浏览器。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">SaaS 产品想加 AI Copilot 功能，但不想重写后端。ERP/CRM 系统有复杂表单，用户希望能一句话完成 20 步操作。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">文本化 DOM 操作，无需截图/OCR/多模态 LLM。一行代码集成，支持任意 OpenAI 兼容 API。可选 Chrome 扩展实现跨页面任务。</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="repo-card">
-                <div class="repo-header">
-                    <span class="rank-badge">8</span>
-                    <div class="repo-title-group">
-                        <a href="https://github.com/teng-lin/notebooklm-py" class="repo-title" target="_blank" rel="noopener">
-                            teng-lin/notebooklm-py
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">Python</span>
-                            <span class="meta-item">⭐ 4,238</span>
-                            <span class="stars-today">+457 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">Google NotebookLM 非官方 Python API。提供编程式访问能力，解锁 Web UI 没有暴露的功能。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">你想批量处理 NotebookLM 资源、自动生成播客/视频/测验、导出结构化数据，但官方界面只能手动操作。</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">完整 Python API + CLI + Claude Code 技能。支持批量导入源、生成音频/视频/幻灯片/思维导图、多格式导出（JSON/Markdown/CSV/MP3/MP4）。</p>
-                    </div>
-                </div>
-            </article>
+        <main class="repo-list" id="repoList">
+            <div class="loading">加载中...</div>
         </main>
-
         <footer class="footer">
-            <p>基于 <a href="https://impeccable.style" target="_blank" rel="noopener">Impeccable</a> 设计原则</p>
+            <p>基于 <a href="https://impeccable.style" target="_blank" rel="noopener">Impeccable</a> 设计原则 · 每日自动更新</p>
         </footer>
     </div>
+
+    <script>
+        let availableDates = [];
+        let currentDate = null;
+        let cache = {};
+
+        async function loadDates() {
+            try {
+                const res = await fetch('data/dates.json');
+                const data = await res.json();
+                availableDates = data.dates || [];
+                
+                const select = document.getElementById('datePicker');
+                select.innerHTML = '';
+                
+                availableDates.forEach(date => {
+                    const option = document.createElement('option');
+                    option.value = date;
+                    option.textContent = formatDate(date);
+                    select.appendChild(option);
+                });
+                
+                // 默认选最新
+                if (availableDates.length > 0) {
+                    currentDate = availableDates[0];
+                    select.value = currentDate;
+                    loadData(currentDate);
+                }
+                
+                updateNavButtons();
+            } catch (e) {
+                console.error('Failed to load dates:', e);
+                document.getElementById('repoList').innerHTML = '<div class="loading">暂无历史数据</div>';
+            }
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            const today = new Date();
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            if (dateStr === today.toISOString().split('T')[0]) {
+                return `今天 (${dateStr})`;
+            } else if (dateStr === yesterday.toISOString().split('T')[0]) {
+                return `昨天 (${dateStr})`;
+            } else {
+                const weekdays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+                return `${dateStr} ${weekdays[d.getDay()]}`;
+            }
+        }
+
+        function updateNavButtons() {
+            const idx = availableDates.indexOf(currentDate);
+            document.getElementById('prevDay').disabled = idx >= availableDates.length - 1;
+            document.getElementById('nextDay').disabled = idx <= 0;
+        }
+
+        async function loadData(date) {
+            const list = document.getElementById('repoList');
+            
+            if (cache[date]) {
+                renderRepos(cache[date]);
+                return;
+            }
+            
+            list.innerHTML = '<div class="loading">加载中...</div>';
+            
+            try {
+                const res = await fetch(`data/${date}.json`);
+                const data = await res.json();
+                cache[date] = data;
+                renderRepos(data);
+            } catch (e) {
+                console.error('Failed to load data:', e);
+                list.innerHTML = '<div class="loading">加载失败，请稍后重试</div>';
+            }
+        }
+
+        function renderRepos(data) {
+            const list = document.getElementById('repoList');
+            const descriptions = data.descriptions || {};
+            
+            list.innerHTML = data.repos.map((repo, i) => {
+                const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+                
+                const desc = descriptions[repo.full_name] || {
+                    overview: repo.description || '暂无描述',
+                    scenario: '适用于需要此功能的开发者和团队。',
+                    solution: '提供完整的解决方案和实现方式。'
+                };
+                
+                return `
+                    <article class="repo-card ${rankClass}">
+                        <div class="repo-header">
+                            <span class="rank-badge">${repo.rank}</span>
+                            <div class="repo-title-group">
+                                <a href="${repo.url}" class="repo-title" target="_blank" rel="noopener">
+                                    ${repo.name}
+                                </a>
+                                <div class="repo-meta">
+                                    <span class="meta-item lang">${repo.language}</span>
+                                    <span class="meta-item">⭐ ${repo.total_stars}</span>
+                                    <span class="stars-today">+${repo.stars_today} 今日</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="repo-content">
+                            <div class="content-section">
+                                <span class="section-label">项目概述</span>
+                                <p class="section-content">${desc.overview}</p>
+                            </div>
+                            <div class="content-section">
+                                <span class="section-label">用户场景</span>
+                                <p class="section-content">${desc.scenario}</p>
+                            </div>
+                            <div class="content-section">
+                                <span class="section-label">解决方案</span>
+                                <p class="section-content">${desc.solution}</p>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // 事件绑定
+        document.getElementById('datePicker').addEventListener('change', (e) => {
+            currentDate = e.target.value;
+            loadData(currentDate);
+            updateNavButtons();
+        });
+
+        document.getElementById('prevDay').addEventListener('click', () => {
+            const idx = availableDates.indexOf(currentDate);
+            if (idx < availableDates.length - 1) {
+                currentDate = availableDates[idx + 1];
+                document.getElementById('datePicker').value = currentDate;
+                loadData(currentDate);
+                updateNavButtons();
+            }
+        });
+
+        document.getElementById('nextDay').addEventListener('click', () => {
+            const idx = availableDates.indexOf(currentDate);
+            if (idx > 0) {
+                currentDate = availableDates[idx - 1];
+                document.getElementById('datePicker').value = currentDate;
+                loadData(currentDate);
+                updateNavButtons();
+            }
+        });
+
+        // 初始化
+        loadDates();
+    </script>
 </body>
 </html>

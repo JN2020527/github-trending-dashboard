@@ -2,12 +2,14 @@
 """
 GitHub Trending 抓取脚本
 每天自动抓取 trending 数据并生成 HTML 页面
+支持历史数据存储
 """
 
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
+import os
 
 def fetch_github_trending():
     """抓取 GitHub Trending 页面"""
@@ -51,7 +53,6 @@ def fetch_github_trending():
             stars_today = '0'
             if stars_today_elem:
                 stars_today_text = stars_today_elem.get_text(strip=True)
-                # 提取数字
                 stars_today = ''.join(filter(str.isdigit, stars_today_text)) or '0'
             
             repos.append({
@@ -71,8 +72,8 @@ def fetch_github_trending():
     
     return repos
 
-def generate_descriptions():
-    """项目描述数据库（可扩展）"""
+def get_descriptions():
+    """项目描述数据库"""
     return {
         'msitarzewski/agency-agents': {
             'overview': '61 个专业 AI Agent 的开源集合，覆盖工程、设计、营销、产品等 9 大领域。每个 Agent 都有独立人格、专属工作流、代码示例和成功指标。',
@@ -113,329 +114,43 @@ def generate_descriptions():
             'overview': 'Google NotebookLM 非官方 Python API。提供编程式访问能力，解锁 Web UI 没有暴露的功能。',
             'scenario': '你想批量处理 NotebookLM 资源、自动生成播客/视频/测验、导出结构化数据，但官方界面只能手动操作。',
             'solution': '完整 Python API + CLI + Claude Code 技能。支持批量导入源、生成音频/视频/幻灯片/思维导图、多格式导出。'
+        },
+        'openclaw/openclaw': {
+            'overview': '你自己的 AI 助手。任何系统、任何平台。开源、可扩展、支持多模型。',
+            'scenario': '需要一个私密、可控的 AI 助手，不想依赖商业服务。',
+            'solution': '模块化架构，支持 Claude/GPT/GLM 等多种模型，可自定义 Agent 技能。'
+        },
+        'karpathy/nanochat': {
+            'overview': '100 美元能买到的最好的 ChatGPT。极简、高效、本地运行。',
+            'scenario': '想在本地低成本运行一个 ChatGPT 级别的对话系统。',
+            'solution': '优化的模型推理，在消费级硬件上实现高性能对话。'
+        },
+        'alirezarezvani/claude-skills': {
+            'overview': '169 个生产级 Claude Code 技能插件，覆盖工程、营销、产品、合规等领域。',
+            'scenario': '想扩展 Claude Code 的能力，需要现成的技能插件。',
+            'solution': '即装即用的技能库，通过 /plugin marketplace 安装。'
+        },
+        'Raphire/Win11Debloat': {
+            'overview': '轻量级 PowerShell 脚本，移除 Windows 预装应用、禁用遥测、自定义系统。',
+            'scenario': '新装的 Windows 有太多预装软件和广告，想清理干净。',
+            'solution': '一键脚本，支持 Windows 10 和 11，可自定义清理选项。'
         }
     }
 
-def generate_html(repos, date_str):
-    """生成 HTML 页面"""
-    descriptions = generate_descriptions()
+def get_available_dates():
+    """获取可用的日期列表（data 目录下的 JSON 文件）"""
+    data_dir = 'data'
+    if not os.path.exists(data_dir):
+        return []
     
-    html_template = '''<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Trending Today</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-base: oklch(97% 0.005 260);
-            --bg-card: oklch(100% 0 0);
-            --fg-primary: oklch(20% 0.02 260);
-            --fg-secondary: oklch(40% 0.02 260);
-            --fg-muted: oklch(55% 0.02 260);
-            --accent: oklch(50% 0.2 25);
-            --rank-gold: oklch(75% 0.15 85);
-            --rank-silver: oklch(70% 0.01 260);
-            --rank-bronze: oklch(65% 0.12 50);
-            --border: oklch(90% 0.01 260);
-            --positive: oklch(50% 0.18 145);
-            --section-label: oklch(50% 0.15 25);
-            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
-            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px;
-            --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'DM Sans', sans-serif;
-            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-            --duration-fast: 150ms; --duration-normal: 300ms;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: var(--font-body);
-            background: var(--bg-base);
-            color: var(--fg-primary);
-            min-height: 100vh;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-xl) var(--space-lg);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: var(--space-2xl);
-            animation: fadeIn var(--duration-normal) var(--ease-out);
-        }
-        .header-label {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--fg-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: var(--space-md);
-        }
-        .header-label::before, .header-label::after {
-            content: '';
-            width: 32px;
-            height: 1px;
-            background: var(--border);
-        }
-        .header h1 {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 7vw, 48px);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: var(--space-sm);
-            color: var(--fg-primary);
-        }
-        .header-date { font-size: 14px; color: var(--fg-muted); }
-        .repo-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-        }
-        .repo-card {
-            position: relative;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: var(--space-md);
-            transition: transform var(--duration-fast) var(--ease-out),
-                        border-color var(--duration-fast) var(--ease-out),
-                        box-shadow var(--duration-fast) var(--ease-out);
-            animation: slideIn var(--duration-normal) var(--ease-out) backwards;
-            display: flex;
-            flex-direction: column;
-        }
-        .repo-card:nth-child(1) { animation-delay: 50ms; }
-        .repo-card:nth-child(2) { animation-delay: 100ms; }
-        .repo-card:nth-child(3) { animation-delay: 150ms; }
-        .repo-card:nth-child(4) { animation-delay: 200ms; }
-        .repo-card:nth-child(5) { animation-delay: 250ms; }
-        .repo-card:nth-child(6) { animation-delay: 300ms; }
-        .repo-card:nth-child(7) { animation-delay: 350ms; }
-        .repo-card:nth-child(8) { animation-delay: 400ms; }
-        .repo-card:hover {
-            transform: translateY(-2px);
-            border-color: oklch(80% 0.02 260);
-            box-shadow: 0 4px 20px oklch(0% 0 0 / 0.08);
-        }
-        .repo-card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
-        .repo-card.rank-1 {
-            border-left: 4px solid var(--rank-gold);
-            background: linear-gradient(135deg, oklch(98% 0.02 85), var(--bg-card));
-        }
-        .repo-card.rank-2 { border-left: 4px solid var(--rank-silver); }
-        .repo-card.rank-3 { border-left: 4px solid var(--rank-bronze); }
-        .repo-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-sm);
-            padding-bottom: var(--space-sm);
-            border-bottom: 1px solid var(--border);
-        }
-        .rank-badge {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 10px;
-            background: oklch(94% 0.005 260);
-            color: var(--fg-muted);
-        }
-        .rank-1 .rank-badge {
-            background: var(--rank-gold);
-            color: oklch(30% 0.02 85);
-            box-shadow: 0 2px 8px oklch(75% 0.15 85 / 0.25);
-        }
-        .rank-2 .rank-badge { background: var(--rank-silver); color: oklch(35% 0.01 260); }
-        .rank-3 .rank-badge { background: var(--rank-bronze); color: oklch(30% 0.02 55); }
-        .repo-title-group { flex: 1; min-width: 0; }
-        .repo-title {
-            font-family: var(--font-display);
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--fg-primary);
-            text-decoration: none;
-            transition: color var(--duration-fast) var(--ease-out);
-            word-break: break-word;
-            display: block;
-        }
-        .repo-title:hover { color: var(--accent); }
-        .repo-title:focus {
-            outline: none;
-            text-decoration: underline;
-            text-decoration-color: var(--accent);
-            text-underline-offset: 3px;
-        }
-        .repo-meta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-sm);
-            font-size: 12px;
-            margin-top: 4px;
-        }
-        .meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--fg-muted);
-        }
-        .meta-item.lang { color: var(--fg-secondary); font-weight: 500; }
-        .meta-item.lang::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.8;
-        }
-        .stars-today {
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-            padding: 2px 8px;
-            background: oklch(92% 0.08 145);
-            color: oklch(40% 0.15 145);
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 11px;
-        }
-        .repo-content { display: grid; gap: var(--space-sm); flex: 1; }
-        .content-section { display: flex; gap: var(--space-sm); }
-        .section-label {
-            flex-shrink: 0;
-            width: 64px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--section-label);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding-top: 2px;
-        }
-        .section-content {
-            flex: 1;
-            font-size: 13px;
-            color: var(--fg-secondary);
-            line-height: 1.6;
-        }
-        .footer {
-            text-align: center;
-            margin-top: var(--space-2xl);
-            padding-top: var(--space-xl);
-            border-top: 1px solid var(--border);
-            font-size: 12px;
-            color: var(--fg-muted);
-        }
-        .footer a {
-            color: var(--fg-secondary);
-            text-decoration: none;
-            transition: color var(--duration-fast);
-        }
-        .footer a:hover { color: var(--accent); }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        @media (max-width: 600px) {
-            .container { padding: var(--space-lg) var(--space-md); }
-            .repo-card { padding: var(--space-md); }
-            .content-section { flex-direction: column; gap: var(--space-xs); }
-            .section-label { width: auto; }
-            .repo-header { flex-wrap: wrap; }
-            .repo-list { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 900px) { .repo-list { grid-template-columns: 1fr; } }
-        @media (min-width: 1400px) { .repo-list { grid-template-columns: repeat(3, 1fr); } }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="header-label">Daily Digest</div>
-            <h1>GitHub Trending</h1>
-            <p class="header-date">''' + date_str + '''</p>
-        </header>
-        <main class="repo-list">
-'''
+    dates = []
+    for f in os.listdir(data_dir):
+        if f.endswith('.json') and f != 'latest.json':
+            date_str = f.replace('.json', '')
+            if len(date_str) == 10 and date_str.count('-') == 2:
+                dates.append(date_str)
     
-    for repo in repos:
-        rank_class = ''
-        if repo['rank'] == 1:
-            rank_class = ' rank-1'
-        elif repo['rank'] == 2:
-            rank_class = ' rank-2'
-        elif repo['rank'] == 3:
-            rank_class = ' rank-3'
-        
-        # 获取描述，如果没有则使用默认描述
-        desc = descriptions.get(repo['full_name'], {
-            'overview': repo['description'] or '暂无描述',
-            'scenario': '适用于需要此功能的开发者和团队。',
-            'solution': '提供完整的解决方案和实现方式。'
-        })
-        
-        html_template += f'''            <article class="repo-card{rank_class}">
-                <div class="repo-header">
-                    <span class="rank-badge">{repo['rank']}</span>
-                    <div class="repo-title-group">
-                        <a href="{repo['url']}" class="repo-title" target="_blank" rel="noopener">
-                            {repo['name']}
-                        </a>
-                        <div class="repo-meta">
-                            <span class="meta-item lang">{repo['language']}</span>
-                            <span class="meta-item">⭐ {repo['total_stars']}</span>
-                            <span class="stars-today">+{repo['stars_today']} 今日</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="repo-content">
-                    <div class="content-section">
-                        <span class="section-label">项目概述</span>
-                        <p class="section-content">{desc['overview']}</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">用户场景</span>
-                        <p class="section-content">{desc['scenario']}</p>
-                    </div>
-                    <div class="content-section">
-                        <span class="section-label">解决方案</span>
-                        <p class="section-content">{desc['solution']}</p>
-                    </div>
-                </div>
-            </article>
-'''
-    
-    html_template += '''        </main>
-        <footer class="footer">
-            <p>基于 <a href="https://impeccable.style" target="_blank" rel="noopener">Impeccable</a> 设计原则 · 每日自动更新</p>
-        </footer>
-    </div>
-</body>
-</html>'''
-    
-    return html_template
+    return sorted(dates, reverse=True)
 
 def main():
     print("🔍 开始抓取 GitHub Trending...")
@@ -448,21 +163,34 @@ def main():
         now = datetime.now()
         date_str = now.strftime("%Y-%m-%d")
         
-        # 生成 HTML
-        html = generate_html(repos, date_str)
+        # 创建 data 目录
+        os.makedirs('data', exist_ok=True)
         
-        # 写入文件
-        with open('index.html', 'w', encoding='utf-8') as f:
-            f.write(html)
+        # 保存当天数据
+        data = {
+            'date': date_str,
+            'repos': repos,
+            'descriptions': get_descriptions()
+        }
         
-        print(f"📝 已生成 index.html ({date_str})")
+        # 保存到日期文件
+        date_file = f'data/{date_str}.json'
+        with open(date_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"📝 已保存 {date_file}")
         
-        # 同时保存 JSON 数据供参考
-        with open('trending_data.json', 'w', encoding='utf-8') as f:
-            json.dump({
-                'date': date_str,
-                'repos': repos
-            }, f, ensure_ascii=False, indent=2)
+        # 更新 latest.json
+        with open('data/latest.json', 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"📝 已更新 data/latest.json")
+        
+        # 获取可用日期列表
+        available_dates = get_available_dates()
+        
+        # 生成日期列表文件
+        with open('data/dates.json', 'w', encoding='utf-8') as f:
+            json.dump({'dates': available_dates}, f, ensure_ascii=False, indent=2)
+        print(f"📝 已更新 data/dates.json ({len(available_dates)} 个日期)")
         
         print("✨ 完成！")
         
