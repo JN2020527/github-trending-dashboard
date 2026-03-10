@@ -64,7 +64,7 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: var(--space-xl) var(--space-lg);
         }
@@ -113,8 +113,8 @@
         }
 
         .repo-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--space-md);
         }
 
@@ -123,12 +123,14 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: var(--space-lg);
+            padding: var(--space-md);
             transition: 
                 transform var(--duration-fast) var(--ease-out),
                 border-color var(--duration-fast) var(--ease-out),
                 box-shadow var(--duration-fast) var(--ease-out);
             animation: slideIn var(--duration-normal) var(--ease-out) backwards;
+            display: flex;
+            flex-direction: column;
         }
 
         .repo-card:nth-child(1) { animation-delay: 50ms; }
@@ -273,18 +275,19 @@
 
         .repo-content {
             display: grid;
-            gap: var(--space-md);
+            gap: var(--space-sm);
+            flex: 1;
         }
 
         .content-section {
             display: flex;
-            gap: var(--space-md);
+            gap: var(--space-sm);
         }
 
         .section-label {
             flex-shrink: 0;
-            width: 72px;
-            font-size: 11px;
+            width: 64px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--section-label);
             text-transform: uppercase;
@@ -294,9 +297,9 @@
 
         .section-content {
             flex: 1;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--fg-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .footer {
@@ -361,6 +364,22 @@
 
             .repo-header {
                 flex-wrap: wrap;
+            }
+
+            .repo-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .repo-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .repo-list {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
