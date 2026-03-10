@@ -338,7 +338,7 @@
 
         async function loadDates() {
             try {
-                const res = await fetch('data/dates.json');
+                const res = await fetch('data/dates.json?v=' + Date.now());
                 const data = await res.json();
                 availableDates = data.dates || [];
                 
@@ -399,7 +399,7 @@
             list.innerHTML = '<div class="loading">加载中...</div>';
             
             try {
-                const res = await fetch(`data/${date}.json`);
+                const res = await fetch(`data/${date}.json?v=` + Date.now());
                 const data = await res.json();
                 cache[date] = data;
                 renderRepos(data);
