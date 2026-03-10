@@ -9,22 +9,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* OKLCH-based color system */
             --bg-base: oklch(12% 0.01 260);
             --bg-elevated: oklch(16% 0.01 260);
-            --bg-card: oklch(20% 0.012 260);
+            --bg-card: oklch(18% 0.012 260);
             --fg-primary: oklch(95% 0.01 260);
             --fg-secondary: oklch(70% 0.02 260);
             --fg-muted: oklch(50% 0.02 260);
             --accent: oklch(70% 0.18 30);
-            --accent-glow: oklch(70% 0.18 30 / 0.15);
+            --accent-glow: oklch(70% 0.18 30 / 0.12);
             --rank-gold: oklch(78% 0.14 85);
             --rank-silver: oklch(72% 0.01 260);
             --rank-bronze: oklch(65% 0.12 55);
-            --border: oklch(28% 0.015 260);
+            --border: oklch(26% 0.015 260);
             --positive: oklch(72% 0.19 145);
+            --section-label: oklch(55% 0.12 30);
             
-            /* Spacing system (8px base) */
             --space-xs: 4px;
             --space-sm: 8px;
             --space-md: 16px;
@@ -32,11 +31,9 @@
             --space-xl: 40px;
             --space-2xl: 64px;
             
-            /* Typography */
             --font-display: 'Space Grotesk', sans-serif;
             --font-body: 'DM Sans', sans-serif;
             
-            /* Motion */
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
             --duration-fast: 150ms;
             --duration-normal: 300ms;
@@ -49,18 +46,17 @@
             background: var(--bg-base);
             color: var(--fg-primary);
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Subtle background texture */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background: 
                 radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-glow), transparent),
-                radial-gradient(circle at 20% 80%, oklch(60% 0.08 260 / 0.08), transparent 40%);
+                radial-gradient(circle at 20% 80%, oklch(60% 0.08 260 / 0.06), transparent 40%);
             pointer-events: none;
             z-index: 0;
         }
@@ -68,12 +64,11 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 680px;
+            max-width: 800px;
             margin: 0 auto;
             padding: var(--space-xl) var(--space-lg);
         }
 
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: var(--space-2xl);
@@ -88,21 +83,21 @@
             font-weight: 500;
             color: var(--fg-muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             margin-bottom: var(--space-md);
         }
 
         .header-label::before,
         .header-label::after {
             content: '';
-            width: 24px;
+            width: 32px;
             height: 1px;
             background: var(--border);
         }
 
         .header h1 {
             font-family: var(--font-display);
-            font-size: clamp(28px, 6vw, 40px);
+            font-size: clamp(32px, 7vw, 48px);
             font-weight: 700;
             letter-spacing: -0.03em;
             margin-bottom: var(--space-sm);
@@ -117,24 +112,22 @@
             color: var(--fg-muted);
         }
 
-        /* Repo list */
         .repo-list {
             display: flex;
             flex-direction: column;
-            gap: var(--space-sm);
+            gap: var(--space-md);
         }
 
-        /* Repo card */
         .repo-card {
             position: relative;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: var(--space-lg);
             transition: 
                 transform var(--duration-fast) var(--ease-out),
                 border-color var(--duration-fast) var(--ease-out),
-                background var(--duration-fast) var(--ease-out);
+                box-shadow var(--duration-fast) var(--ease-out);
             animation: slideIn var(--duration-normal) var(--ease-out) backwards;
         }
 
@@ -148,9 +141,9 @@
         .repo-card:nth-child(8) { animation-delay: 400ms; }
 
         .repo-card:hover {
-            transform: translateY(-2px);
-            border-color: oklch(35% 0.02 260);
-            background: var(--bg-elevated);
+            transform: translateY(-3px);
+            border-color: oklch(32% 0.02 260);
+            box-shadow: 0 8px 32px oklch(0% 0 0 / 0.3);
         }
 
         .repo-card:focus-within {
@@ -158,29 +151,37 @@
             outline-offset: 2px;
         }
 
-        /* Rank badges */
-        .repo-card.rank-1 { border-left: 3px solid var(--rank-gold); }
-        .repo-card.rank-2 { border-left: 3px solid var(--rank-silver); }
-        .repo-card.rank-3 { border-left: 3px solid var(--rank-bronze); }
+        .repo-card.rank-1 { 
+            border-left: 4px solid var(--rank-gold);
+            background: linear-gradient(135deg, oklch(20% 0.015 85 / 0.15), var(--bg-card));
+        }
+        .repo-card.rank-2 { 
+            border-left: 4px solid var(--rank-silver); 
+        }
+        .repo-card.rank-3 { 
+            border-left: 4px solid var(--rank-bronze); 
+        }
 
         .repo-header {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: var(--space-md);
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--border);
         }
 
         .rank-badge {
             flex-shrink: 0;
-            width: 28px;
-            height: 28px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-display);
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 700;
-            border-radius: 6px;
+            border-radius: 10px;
             background: var(--bg-elevated);
             color: var(--fg-muted);
         }
@@ -188,6 +189,7 @@
         .rank-1 .rank-badge {
             background: var(--rank-gold);
             color: oklch(20% 0.02 85);
+            box-shadow: 0 2px 12px oklch(78% 0.14 85 / 0.3);
         }
 
         .rank-2 .rank-badge {
@@ -200,14 +202,20 @@
             color: oklch(25% 0.02 55);
         }
 
+        .repo-title-group {
+            flex: 1;
+            min-width: 0;
+        }
+
         .repo-title {
             font-family: var(--font-display);
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 600;
             color: var(--fg-primary);
             text-decoration: none;
             transition: color var(--duration-fast) var(--ease-out);
             word-break: break-word;
+            display: block;
         }
 
         .repo-title:hover {
@@ -221,62 +229,76 @@
             text-underline-offset: 3px;
         }
 
-        .repo-desc {
-            font-size: 13px;
-            color: var(--fg-secondary);
-            margin-bottom: var(--space-md);
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
         .repo-meta {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: var(--space-md);
+            gap: var(--space-sm);
             font-size: 12px;
+            margin-top: 4px;
         }
 
         .meta-item {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-xs);
+            gap: 4px;
             color: var(--fg-muted);
         }
 
         .meta-item.lang {
             color: var(--fg-secondary);
+            font-weight: 500;
         }
 
         .meta-item.lang::before {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--accent);
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .stars-today {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: 3px 8px;
-            background: oklch(72% 0.19 145 / 0.12);
+            gap: 3px;
+            padding: 2px 8px;
+            background: oklch(72% 0.19 145 / 0.15);
             color: var(--positive);
             border-radius: 6px;
             font-weight: 600;
+            font-size: 11px;
         }
 
-        .stars-today svg {
-            width: 12px;
-            height: 12px;
+        .repo-content {
+            display: grid;
+            gap: var(--space-md);
         }
 
-        /* Footer */
+        .content-section {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .section-label {
+            flex-shrink: 0;
+            width: 72px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--section-label);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-top: 2px;
+        }
+
+        .section-content {
+            flex: 1;
+            font-size: 14px;
+            color: var(--fg-secondary);
+            line-height: 1.7;
+        }
+
         .footer {
             text-align: center;
             margin-top: var(--space-2xl);
@@ -296,20 +318,15 @@
             color: var(--accent);
         }
 
-        /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(12px);
+                transform: translateY(16px);
             }
             to {
                 opacity: 1;
@@ -317,19 +334,14 @@
             }
         }
 
-        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .container {
                 padding: var(--space-lg) var(--space-md);
             }
@@ -338,8 +350,17 @@
                 padding: var(--space-md);
             }
 
-            .repo-meta {
-                gap: var(--space-sm);
+            .content-section {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+
+            .section-label {
+                width: auto;
+            }
+
+            .repo-header {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -347,7 +368,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <div class="header-label">每日精选</div>
+            <div class="header-label">Daily Digest</div>
             <h1>GitHub Trending</h1>
             <p class="header-date">2026-03-10</p>
         </header>
@@ -356,200 +377,240 @@
             <article class="repo-card rank-1">
                 <div class="repo-header">
                     <span class="rank-badge">1</span>
-                    <a href="https://github.com/msitarzewski/agency-agents" class="repo-title" target="_blank" rel="noopener">
-                        msitarzewski/agency-agents
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/msitarzewski/agency-agents" class="repo-title" target="_blank" rel="noopener">
+                            msitarzewski/agency-agents
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Shell</span>
+                            <span class="meta-item">⭐ 19,264</span>
+                            <span class="stars-today">+4,415 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">61 个专业 AI Agent 集合，覆盖工程、设计、营销等 9 大领域。解决通用提示词太泛的问题，每个 Agent 有独立人格、专属工作流和可交付成果。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Shell</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        19,264
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +4,415
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">61 个专业 AI Agent 的开源集合，覆盖工程、设计、营销、产品等 9 大领域。每个 Agent 都有独立人格、专属工作流、代码示例和成功指标。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">适合需要专业 AI 协作的开发者和团队。当你发现通用提示词太泛、无法产出专业交付物时，可以召唤对应领域的专家 Agent。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">深度专业化的 Agent 设计：Frontend Developer 懂 React 性能优化，Reddit Community Builder 懂社区运营礼仪，每个 Agent 都有真实项目验证过的工作流。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card rank-2">
                 <div class="repo-header">
                     <span class="rank-badge">2</span>
-                    <a href="https://github.com/666ghj/MiroFish" class="repo-title" target="_blank" rel="noopener">
-                        666ghj/MiroFish
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/666ghj/MiroFish" class="repo-title" target="_blank" rel="noopener">
+                            666ghj/MiroFish
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Python</span>
+                            <span class="meta-item">⭐ 10,881</span>
+                            <span class="stars-today">+2,294 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">基于多智能体的 AI 预测引擎，通过构建平行数字世界进行未来推演。让决策者在零风险环境中试错，成千上万智能体交互演化后生成预测报告。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Python</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        10,881
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +2,294
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">基于多智能体技术的 AI 预测引擎。上传种子材料（新闻、报告、小说），自动构建平行数字世界，成千上万智能体在其中交互演化。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">决策者需要零风险试错环境：政策推演、公关策略、舆情预测。普通用户也可以推演小说结局或探索脑洞。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">GraphRAG 构建知识图谱 → 生成独立人格智能体 → 双平台并行模拟 → ReportAgent 生成可交互的预测报告。支持与模拟世界中任意角色对话。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card rank-3">
                 <div class="repo-header">
                     <span class="rank-badge">3</span>
-                    <a href="https://github.com/GoogleCloudPlatform/generative-ai" class="repo-title" target="_blank" rel="noopener">
-                        GoogleCloudPlatform/generative-ai
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/GoogleCloudPlatform/generative-ai" class="repo-title" target="_blank" rel="noopener">
+                            GoogleCloudPlatform/generative-ai
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Jupyter</span>
+                            <span class="meta-item">⭐ 15,279</span>
+                            <span class="stars-today">+1,282 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">Google Cloud 生成式 AI 官方示例集。帮助开发者快速上手 Vertex AI 上的 Gemini，提供入门教程、用例演示、API 调用示例和最佳实践。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Jupyter</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        15,279
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +1,282
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">Google Cloud 生成式 AI 官方示例仓库。包含 notebooks、代码示例、示例应用，演示如何在 Vertex AI 上使用 Gemini 等模型。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">开发者想快速上手 Google Cloud 的生成式 AI 能力，但不知道从哪里开始。需要从入门到进阶的完整学习路径。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">按场景分类的示例库：Gemini 入门、RAG/ grounding、图像生成 (Imagen)、语音 (Chirp)、搜索 (Vertex AI Search)。每个都有可运行的 notebook。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card">
                 <div class="repo-header">
                     <span class="rank-badge">4</span>
-                    <a href="https://github.com/pbakaus/impeccable" class="repo-title" target="_blank" rel="noopener">
-                        pbakaus/impeccable
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/pbakaus/impeccable" class="repo-title" target="_blank" rel="noopener">
+                            pbakaus/impeccable
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">JavaScript</span>
+                            <span class="meta-item">⭐ 2,969</span>
+                            <span class="stars-today">+1,288 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">让 AI 摆脱"模板感"的设计语言。7 个专业参考文件 + 17 个命令 + 反模式清单，告别 Inter 字体、紫色渐变、卡片嵌套等 AI 设计通病。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">JavaScript</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        2,969
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +1,288
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">让 AI 摆脱"模板感"的设计语言系统。7 个专业参考文件 + 17 个命令 + 精选反模式清单。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">AI 生成的前端设计总是千篇一律：Inter 字体、紫色渐变、卡片嵌套卡片。你需要 AI 懂真正的设计原则，而不是套模板。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">覆盖排版、色彩、空间、动效、交互、响应式、UX 文案 7 大领域。命令如 /audit 审查质量、/polish 打磨细节、/distill 精简复杂度。支持 Claude Code、Cursor、Codex 等工具。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card">
                 <div class="repo-header">
                     <span class="rank-badge">5</span>
-                    <a href="https://github.com/666ghj/BettaFish" class="repo-title" target="_blank" rel="noopener">
-                        666ghj/BettaFish
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/666ghj/BettaFish" class="repo-title" target="_blank" rel="noopener">
+                            666ghj/BettaFish
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Python</span>
+                            <span class="meta-item">⭐ 37,146</span>
+                            <span class="stars-today">+509 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">多 Agent 舆情分析引擎，打破信息茧房。4 类 Agent 协作 + 情感分析模型 + 多模态能力，覆盖 30+ 社媒平台，自动生成深度舆情报告。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Python</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        37,146
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +509
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">多 Agent 舆情分析系统"微舆"。用户用自然语言提问，4 类 Agent 协作分析国内外 30+ 社媒平台，自动生成深度报告。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">品牌方需要了解舆情风向、分析用户反馈、追踪热点事件。传统方式要人工收集多个平台数据，效率低下且容易遗漏。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">QueryAgent 广度搜索 + MediaAgent 多模态理解 + InsightAgent 私有数据挖掘 + ReportAgent 报告生成。引入"论坛"辩论机制避免单一视角，支持自定义模板。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card">
                 <div class="repo-header">
                     <span class="rank-badge">6</span>
-                    <a href="https://github.com/NousResearch/hermes-agent" class="repo-title" target="_blank" rel="noopener">
-                        NousResearch/hermes-agent
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/NousResearch/hermes-agent" class="repo-title" target="_blank" rel="noopener">
+                            NousResearch/hermes-agent
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Python</span>
+                            <span class="meta-item">⭐ 2,971</span>
+                            <span class="stars-today">+377 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">自我进化的 AI Agent。内置学习循环：从经验创建技能、使用中改进、持久化记忆、搜索历史对话，跨会话构建你的用户画像。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Python</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        2,971
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +377
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">自我进化的 AI Agent。内置完整学习循环：从经验创建技能、使用中改进技能、主动持久化记忆、搜索历史对话。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">你需要一个真正"认识你"的 Agent。不是每次对话都从零开始，而是能记住你的偏好、习惯、项目，越用越顺手。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">Honcho 方言式用户建模 + Agent 自主创建技能 + FTS5 跨会话搜索 + 定时任务调度。支持 Telegram/Discord/Slack 等多平台接入，可在 $5 VPS 上运行。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card">
                 <div class="repo-header">
                     <span class="rank-badge">7</span>
-                    <a href="https://github.com/alibaba/page-agent" class="repo-title" target="_blank" rel="noopener">
-                        alibaba/page-agent
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/alibaba/page-agent" class="repo-title" target="_blank" rel="noopener">
+                            alibaba/page-agent
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">TypeScript</span>
+                            <span class="meta-item">⭐ 2,564</span>
+                            <span class="stars-today">+465 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">页内 JavaScript GUI Agent，用自然语言控制网页。无需浏览器插件/Python/无头浏览器，文本化 DOM 操作，一行代码集成。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">TypeScript</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        2,564
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +465
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">阿里巴巴开源的页内 GUI Agent。纯 JavaScript 实现，用自然语言控制网页界面，无需浏览器插件、Python 或无头浏览器。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">SaaS 产品想加 AI Copilot 功能，但不想重写后端。ERP/CRM 系统有复杂表单，用户希望能一句话完成 20 步操作。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">文本化 DOM 操作，无需截图/OCR/多模态 LLM。一行代码集成，支持任意 OpenAI 兼容 API。可选 Chrome 扩展实现跨页面任务。</p>
+                    </div>
                 </div>
             </article>
 
             <article class="repo-card">
                 <div class="repo-header">
                     <span class="rank-badge">8</span>
-                    <a href="https://github.com/teng-lin/notebooklm-py" class="repo-title" target="_blank" rel="noopener">
-                        teng-lin/notebooklm-py
-                    </a>
+                    <div class="repo-title-group">
+                        <a href="https://github.com/teng-lin/notebooklm-py" class="repo-title" target="_blank" rel="noopener">
+                            teng-lin/notebooklm-py
+                        </a>
+                        <div class="repo-meta">
+                            <span class="meta-item lang">Python</span>
+                            <span class="meta-item">⭐ 4,238</span>
+                            <span class="stars-today">+457 今日</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="repo-desc">Google NotebookLM 非官方 Python API。解锁 Web UI 没有的功能：批量下载、多格式导出、编程式访问，支持 Python、CLI 和 AI Agent 集成。</p>
-                <div class="repo-meta">
-                    <span class="meta-item lang">Python</span>
-                    <span class="meta-item">
-                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                            <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
-                        </svg>
-                        4,238
-                    </span>
-                    <span class="stars-today">
-                        <svg viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M7.247 4.86l-4.796 5.481c-.566.646-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-                        </svg>
-                        +457
-                    </span>
+                <div class="repo-content">
+                    <div class="content-section">
+                        <span class="section-label">项目概述</span>
+                        <p class="section-content">Google NotebookLM 非官方 Python API。提供编程式访问能力，解锁 Web UI 没有暴露的功能。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">用户场景</span>
+                        <p class="section-content">你想批量处理 NotebookLM 资源、自动生成播客/视频/测验、导出结构化数据，但官方界面只能手动操作。</p>
+                    </div>
+                    <div class="content-section">
+                        <span class="section-label">解决方案</span>
+                        <p class="section-content">完整 Python API + CLI + Claude Code 技能。支持批量导入源、生成音频/视频/幻灯片/思维导图、多格式导出（JSON/Markdown/CSV/MP3/MP4）。</p>
+                    </div>
                 </div>
             </article>
         </main>
