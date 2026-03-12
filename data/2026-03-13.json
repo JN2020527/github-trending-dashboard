@@ -1,0 +1,127 @@
+{
+  "date": "2026-03-13",
+  "repos": [
+    {
+      "rank": 1,
+      "name": "msitarzewski / agency-agents",
+      "full_name": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "description": "完整的 AI 代理公司 - 从前端到社区运营的专家级 agent",
+      "language": "Shell",
+      "total_stars": "19,904",
+      "stars_today": "4,297"
+    },
+    {
+      "rank": 2,
+      "name": "666ghj / MiroFish",
+      "full_name": "666ghj/MiroFish",
+      "url": "https://github.com/666ghj/MiroFish",
+      "description": "简洁通用的群体智能引擎，预测万物",
+      "language": "Python",
+      "total_stars": "9,202",
+      "stars_today": "2,222"
+    },
+    {
+      "rank": 3,
+      "name": "GoogleCloudPlatform / generative-ai",
+      "full_name": "GoogleCloudPlatform/generative-ai",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai",
+      "description": "Google Cloud 上的生成式 AI 示例代码和 notebooks",
+      "language": "Jupyter",
+      "total_stars": "15,053",
+      "stars_today": "1,291"
+    },
+    {
+      "rank": 4,
+      "name": "pbakaus / impeccable",
+      "full_name": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "description": "让你的 AI 更擅长设计的设计语言",
+      "language": "JavaScript",
+      "total_stars": "2,575",
+      "stars_today": "1,291"
+    },
+    {
+      "rank": 5,
+      "name": "666ghj / BettaFish",
+      "full_name": "666ghj/BettaFish",
+      "url": "https://github.com/666ghj/BettaFish",
+      "description": "微舆：人人可用的多 Agent 舆情分析助手",
+      "language": "Python",
+      "total_stars": "37,146",
+      "stars_today": "509"
+    },
+    {
+      "rank": 6,
+      "name": "alibaba / page-agent",
+      "full_name": "alibaba/page-agent",
+      "url": "https://github.com/alibaba/page-agent",
+      "description": "阿里巴巴的页面内 GUI agent",
+      "language": "TypeScript",
+      "total_stars": "2,232",
+      "stars_today": "715"
+    },
+    {
+      "rank": 7,
+      "name": "karpathy / nanochat",
+      "full_name": "karpathy/nanochat",
+      "url": "https://github.com/karpathy/nanochat",
+      "description": "100 美元能买到的最好的 ChatGPT",
+      "language": "Python",
+      "total_stars": "45,242",
+      "stars_today": "332"
+    },
+    {
+      "rank": 8,
+      "name": "microsoft / BitNet",
+      "full_name": "microsoft/BitNet",
+      "url": "https://github.com/microsoft/BitNet",
+      "description": "微软官方 1-bit LLM 推理框架",
+      "language": "C++",
+      "total_stars": "12,847",
+      "stars_today": "2,149"
+    }
+  ],
+  "descriptions": {
+    "msitarzewski/agency-agents": {
+      "overview": "完整的 AI 代理公司架构，包含前端专家、后端专家、增长专家、社区运营等多个专业 agent",
+      "scenario": "适用于需要构建完整 AI 代理团队的企业和团队",
+      "solution": "提供模块化的 agent 架构，每个 agent 都有独特的技能和性格"
+    },
+    "666ghj/MiroFish": {
+      "overview": "简洁通用的群体智能引擎，可以预测万物",
+      "scenario": "适用于需要群体预测、集体决策的场景",
+      "solution": "提供简洁的 API 和通用架构，支持多种预测任务"
+    },
+    "GoogleCloudPlatform/generative-ai": {
+      "overview": "Google Cloud 官方的生成式 AI 示例代码和教程",
+      "scenario": "适用于在 Google Cloud 上部署生成式 AI 应用的开发者",
+      "solution": "提供完整的代码示例和 Jupyter notebooks"
+    },
+    "pbakaus/impeccable": {
+      "overview": "设计语言系统，让 AI agent 更擅长设计",
+      "scenario": "适用于需要 AI 生成高质量设计的工作流",
+      "solution": "提供设计原则和规范，让 AI 输出符合专业标准"
+    },
+    "666ghj/BettaFish": {
+      "overview": "多 Agent 舆情分析助手，人人可用",
+      "scenario": "适用于需要监控和分析社交媒体舆情的团队和个人",
+      "solution": "多 agent 协作，自动收集、分析、总结舆情"
+    },
+    "alibaba/page-agent": {
+      "overview": "阿里巴巴开源的浏览器内 GUI agent",
+      "scenario": "适用于需要用自然语言控制网页的场景",
+      "solution": "直接在浏览器中运行，无需后端服务"
+    },
+    "karpathy/nanochat": {
+      "overview": "100 美元成本的最佳 ChatGPT 替代方案",
+      "scenario": "适用于需要在本地部署高质量对话模型的开发者",
+      "solution": "优化的模型架构，在有限资源下实现最佳性能"
+    },
+    "microsoft/BitNet": {
+      "overview": "微软官方的 1-bit LLM 推理框架",
+      "scenario": "适用于需要在大规模生产环境中部署 LLM 的场景",
+      "solution": "通过 1-bit 量化大幅降低推理成本和延迟"
+    }
+  }
+}
