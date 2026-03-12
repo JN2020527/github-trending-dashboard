@@ -3,125 +3,125 @@
   "repos": [
     {
       "rank": 1,
-      "name": "msitarzewski / agency-agents",
-      "full_name": "msitarzewski/agency-agents",
-      "url": "https://github.com/msitarzewski/agency-agents",
-      "description": "完整的 AI 代理公司 - 从前端到社区运营的专家级 agent",
-      "language": "Shell",
-      "total_stars": "19,904",
-      "stars_today": "4,297"
+      "name": "microsoft / BitNet",
+      "full_name": "microsoft/BitNet",
+      "url": "https://github.com/microsoft/BitNet",
+      "description": "微软官方的 1-bit LLM 推理框架",
+      "language": "Python",
+      "total_stars": "32,272",
+      "stars_today": "2,149"
     },
     {
       "rank": 2,
-      "name": "666ghj / MiroFish",
-      "full_name": "666ghj/MiroFish",
-      "url": "https://github.com/666ghj/MiroFish",
-      "description": "简洁通用的群体智能引擎，预测万物",
+      "name": "fishaudio / fish-speech",
+      "full_name": "fishaudio/fish-speech",
+      "url": "https://github.com/fishaudio/fish-speech",
+      "description": "SOTA 开源 TTS（文本转语音）",
       "language": "Python",
-      "total_stars": "9,202",
-      "stars_today": "2,222"
+      "total_stars": "26,334",
+      "stars_today": "630"
     },
     {
       "rank": 3,
-      "name": "GoogleCloudPlatform / generative-ai",
-      "full_name": "GoogleCloudPlatform/generative-ai",
-      "url": "https://github.com/GoogleCloudPlatform/generative-ai",
-      "description": "Google Cloud 上的生成式 AI 示例代码和 notebooks",
-      "language": "Jupyter",
-      "total_stars": "15,053",
-      "stars_today": "1,291"
+      "name": "langflow-ai / openrag",
+      "full_name": "langflow-ai/openrag",
+      "url": "https://github.com/langflow-ai/openrag",
+      "description": "基于 Langflow、Docling 和 Opensearch 的完整 RAG 平台",
+      "language": "Python",
+      "total_stars": "1,503",
+      "stars_today": "491"
     },
     {
       "rank": 4,
-      "name": "pbakaus / impeccable",
-      "full_name": "pbakaus/impeccable",
-      "url": "https://github.com/pbakaus/impeccable",
-      "description": "让你的 AI 更擅长设计的设计语言",
-      "language": "JavaScript",
-      "total_stars": "2,575",
-      "stars_today": "1,291"
+      "name": "InsForge / InsForge",
+      "full_name": "InsForge/InsForge",
+      "url": "https://github.com/InsForge/InsForge",
+      "description": "专为 Agentic 开发设计的后端，让 agent 能够构建全栈应用",
+      "language": "TypeScript",
+      "total_stars": "3,078",
+      "stars_today": "260"
     },
     {
       "rank": 5,
-      "name": "666ghj / BettaFish",
-      "full_name": "666ghj/BettaFish",
-      "url": "https://github.com/666ghj/BettaFish",
-      "description": "微舆：人人可用的多 Agent 舆情分析助手",
+      "name": "vectorize-io / hindsight",
+      "full_name": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "description": "会学习的 Agent 记忆系统",
       "language": "Python",
-      "total_stars": "37,146",
-      "stars_today": "509"
+      "total_stars": "3,058",
+      "stars_today": "300"
     },
     {
       "rank": 6,
       "name": "alibaba / page-agent",
       "full_name": "alibaba/page-agent",
       "url": "https://github.com/alibaba/page-agent",
-      "description": "阿里巴巴的页面内 GUI agent",
+      "description": "阿里巴巴的浏览器内 GUI agent，用自然语言控制网页",
       "language": "TypeScript",
-      "total_stars": "2,232",
-      "stars_today": "715"
+      "total_stars": "5,894",
+      "stars_today": "1,196"
     },
     {
       "rank": 7,
-      "name": "karpathy / nanochat",
-      "full_name": "karpathy/nanochat",
-      "url": "https://github.com/karpathy/nanochat",
-      "description": "100 美元能买到的最好的 ChatGPT",
-      "language": "Python",
-      "total_stars": "45,242",
-      "stars_today": "332"
+      "name": "obra / superpowers",
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "Agentic Skills 框架 + 软件开发方法论",
+      "language": "Shell",
+      "total_stars": "79,878",
+      "stars_today": "1,708"
     },
     {
       "rank": 8,
-      "name": "microsoft / BitNet",
-      "full_name": "microsoft/BitNet",
-      "url": "https://github.com/microsoft/BitNet",
-      "description": "微软官方 1-bit LLM 推理框架",
-      "language": "C++",
-      "total_stars": "12,847",
-      "stars_today": "2,149"
+      "name": "NousResearch / hermes-agent",
+      "full_name": "NousResearch/hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "description": "随你成长的 Agent",
+      "language": "Python",
+      "total_stars": "6,131",
+      "stars_today": "1,235"
     }
   ],
   "descriptions": {
-    "msitarzewski/agency-agents": {
-      "overview": "完整的 AI 代理公司架构，包含前端专家、后端专家、增长专家、社区运营等多个专业 agent",
-      "scenario": "适用于需要构建完整 AI 代理团队的企业和团队",
-      "solution": "提供模块化的 agent 架构，每个 agent 都有独特的技能和性格"
+    "microsoft/BitNet": {
+      "overview": "微软官方的 1-bit LLM 推理框架",
+      "scenario": "适用于需要在大规模生产环境中部署 LLM 的场景",
+      "solution": "通过 1-bit 量化大幅降低推理成本和延迟，提升效率 10 倍以上"
     },
-    "666ghj/MiroFish": {
-      "overview": "简洁通用的群体智能引擎，可以预测万物",
-      "scenario": "适用于需要群体预测、集体决策的场景",
-      "solution": "提供简洁的 API 和通用架构，支持多种预测任务"
+    "fishaudio/fish-speech": {
+      "overview": "SOTA 级开源文本转语音（TTS）系统",
+      "scenario": "适用于需要高质量语音合成的应用场景",
+      "solution": "提供最先进的 TTS 模型和完整的工具链"
     },
-    "GoogleCloudPlatform/generative-ai": {
-      "overview": "Google Cloud 官方的生成式 AI 示例代码和教程",
-      "scenario": "适用于在 Google Cloud 上部署生成式 AI 应用的开发者",
-      "solution": "提供完整的代码示例和 Jupyter notebooks"
+    "langflow-ai/openrag": {
+      "overview": "完整的单包 RAG（检索增强生成）平台",
+      "scenario": "适用于需要构建 RAG 应用的开发者和企业",
+      "solution": "集成 Langflow、Docling 和 Opensearch，提供开箱即用的 RAG 解决方案"
     },
-    "pbakaus/impeccable": {
-      "overview": "设计语言系统，让 AI agent 更擅长设计",
-      "scenario": "适用于需要 AI 生成高质量设计的工作流",
-      "solution": "提供设计原则和规范，让 AI 输出符合专业标准"
+    "InsForge/InsForge": {
+      "overview": "专为 Agentic 开发设计的后端平台",
+      "scenario": "适用于需要让 AI agent 构建全栈应用的场景",
+      "solution": "提供 agent 所需的所有后端能力和工具"
     },
-    "666ghj/BettaFish": {
-      "overview": "多 Agent 舆情分析助手，人人可用",
-      "scenario": "适用于需要监控和分析社交媒体舆情的团队和个人",
-      "solution": "多 agent 协作，自动收集、分析、总结舆情"
+    "vectorize-io/hindsight": {
+      "overview": "会学习的 Agent 记忆系统",
+      "scenario": "适用于需要 agent 持续学习和改进的场景",
+      "solution": "让 agent 能够从历史交互中学习和进化"
     },
     "alibaba/page-agent": {
       "overview": "阿里巴巴开源的浏览器内 GUI agent",
       "scenario": "适用于需要用自然语言控制网页的场景",
-      "solution": "直接在浏览器中运行，无需后端服务"
+      "solution": "直接在浏览器中运行，无需后端服务，用自然语言操控网页"
     },
-    "karpathy/nanochat": {
-      "overview": "100 美元成本的最佳 ChatGPT 替代方案",
-      "scenario": "适用于需要在本地部署高质量对话模型的开发者",
-      "solution": "优化的模型架构，在有限资源下实现最佳性能"
+    "obra/superpowers": {
+      "overview": "Agentic Skills 框架和软件开发方法论",
+      "scenario": "适用于想要构建 agent skills 和改进开发流程的团队",
+      "solution": "提供完整的框架和经过验证的方法论"
     },
-    "microsoft/BitNet": {
-      "overview": "微软官方的 1-bit LLM 推理框架",
-      "scenario": "适用于需要在大规模生产环境中部署 LLM 的场景",
-      "solution": "通过 1-bit 量化大幅降低推理成本和延迟"
+    "NousResearch/hermes-agent": {
+      "overview": "能够随用户一起成长的 Agent",
+      "scenario": "适用于需要长期陪伴和持续学习的 agent 应用",
+      "solution": "强调持续学习和个性化适应"
     }
   }
 }
