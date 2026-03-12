@@ -142,6 +142,9 @@ fi
 cd "$DASHBOARD_DIR"
 git add -A
 git commit -m "Update GitHub Trending - $DATE" || echo "No changes to commit"
+
+# 拉取远程更新并推送
+git pull --rebase origin main || true
 git push origin main
 
 echo "✅ Dashboard 已更新并推送到 GitHub!"
