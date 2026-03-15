@@ -1,62 +1,77 @@
 {
   "date": "2026-03-13",
-  "timestamp": "2026-03-14T00:30:00Z",
-  "repos": [
+  "repositories": [
     {
-      "name": "microsoft/BitNet",
-      "description": "Official inference framework for 1-bit LLMs",
+      "rank": 1,
+      "name": "volcengine/OpenViking",
+      "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
       "language": "Python",
-      "stars": 33948,
-      "todayStars": 2227
+      "stars": 10542,
+      "starsToday": 1610,
+      "url": "https://github.com/volcengine/OpenViking"
     },
     {
+      "rank": 2,
+      "name": "anthropics/claude-plugins-official",
+      "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "language": "Python",
+      "stars": 11287,
+      "starsToday": 411,
+      "url": "https://github.com/anthropics/claude-plugins-official"
+    },
+    {
+      "rank": 3,
+      "name": "dimensionalOS/dimos",
+      "description": "The Dimensional Framework",
+      "language": "Python",
+      "stars": 852,
+      "starsToday": 72,
+      "url": "https://github.com/dimensionalOS/dimos"
+    },
+    {
+      "rank": 4,
+      "name": "p-e-w/heretic",
+      "description": "Fully automatic censorship removal for language models",
+      "language": "Python",
+      "stars": 13737,
+      "starsToday": 694,
+      "url": "https://github.com/p-e-w/heretic"
+    },
+    {
+      "rank": 5,
       "name": "langflow-ai/openrag",
       "description": "OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.",
       "language": "Python",
-      "stars": 2236,
-      "todayStars": 905
+      "stars": 2710,
+      "starsToday": 564,
+      "url": "https://github.com/langflow-ai/openrag"
     },
     {
+      "rank": 6,
       "name": "lightpanda-io/browser",
       "description": "Lightpanda: the headless browser designed for AI and automation",
       "language": "Zig",
-      "stars": 15400,
-      "todayStars": 2093
+      "stars": 17085,
+      "starsToday": 2069,
+      "url": "https://github.com/lightpanda-io/browser"
     },
     {
-      "name": "obra/superpowers",
-      "description": "An agentic skills framework & software development methodology that works.",
-      "language": "Shell",
-      "stars": 81893,
-      "todayStars": 2106
-    },
-    {
-      "name": "public-apis/public-apis",
-      "description": "A collective list of free APIs",
-      "language": "Python",
-      "stars": 409450,
-      "todayStars": 892
-    },
-    {
-      "name": "promptfoo/promptfoo",
-      "description": "Test your prompts, agents, and RAGs. Red teaming/pentesting/vulnerability scanning for AI. Compare performance of GPT, Claude, Gemini, Llama, and more. Simple declarative configs with command line and CI/CD integration.",
-      "language": "TypeScript",
-      "stars": 15252,
-      "todayStars": 1668
-    },
-    {
+      "rank": 7,
       "name": "msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
       "language": "Shell",
-      "stars": 39999,
-      "todayStars": 5745
+      "stars": 43711,
+      "starsToday": 4280,
+      "url": "https://github.com/msitarzewski/agency-agents"
     },
     {
-      "name": "dolthub/dolt",
-      "description": "Dolt – Git for Data",
-      "language": "Go",
-      "stars": 21063,
-      "todayStars": 60
+      "rank": 8,
+      "name": "fishaudio/fish-speech",
+      "description": "SOTA Open Source TTS",
+      "language": "Python",
+      "stars": 27213,
+      "starsToday": 381,
+      "url": "https://github.com/fishaudio/fish-speech"
     }
   ]
 }
