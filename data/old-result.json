@@ -8,7 +8,7 @@
       "url": "https://github.com/volcengine/OpenViking",
       "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
       "language": "Python",
-      "total_stars": "11,264",
+      "total_stars": "10,893",
       "stars_today": "1610"
     },
     {
@@ -18,7 +18,7 @@
       "url": "https://github.com/anthropics/claude-plugins-official",
       "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
       "language": "Python",
-      "total_stars": "11,534",
+      "total_stars": "11,431",
       "stars_today": "411"
     },
     {
@@ -26,9 +26,9 @@
       "name": "dimensionalOS / dimos",
       "full_name": "dimensionalOS/dimos",
       "url": "https://github.com/dimensionalOS/dimos",
-      "description": "Dimensional is the agentic operating system for physical space. Vibecode humanoids, quadrupeds, drones, and other hardware platforms in natural language and build multi-agent systems that work seamlessly with physical input (cameras, lidar, actuators).",
+      "description": "The Dimensional Framework",
       "language": "Python",
-      "total_stars": "1,001",
+      "total_stars": "923",
       "stars_today": "72"
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://github.com/p-e-w/heretic",
       "description": "Fully automatic censorship removal for language models",
       "language": "Python",
-      "total_stars": "14,161",
+      "total_stars": "13,956",
       "stars_today": "694"
     },
     {
@@ -48,7 +48,7 @@
       "url": "https://github.com/langflow-ai/openrag",
       "description": "OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.",
       "language": "Python",
-      "total_stars": "2,866",
+      "total_stars": "2,788",
       "stars_today": "564"
     },
     {
@@ -58,7 +58,7 @@
       "url": "https://github.com/lightpanda-io/browser",
       "description": "Lightpanda: the headless browser designed for AI and automation",
       "language": "Zig",
-      "total_stars": "17,531",
+      "total_stars": "17,321",
       "stars_today": "2069"
     },
     {
@@ -68,7 +68,7 @@
       "url": "https://github.com/msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
       "language": "Shell",
-      "total_stars": "44,894",
+      "total_stars": "44,267",
       "stars_today": "4280"
     },
     {
@@ -78,7 +78,7 @@
       "url": "https://github.com/fishaudio/fish-speech",
       "description": "SOTA Open Source TTS",
       "language": "Python",
-      "total_stars": "27,371",
+      "total_stars": "27,298",
       "stars_today": "381"
     }
   ],
