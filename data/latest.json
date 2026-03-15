@@ -8,7 +8,7 @@
       "url": "https://github.com/volcengine/OpenViking",
       "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
       "language": "Python",
-      "total_stars": "11,264",
+      "total_stars": "11,293",
       "stars_today": "1610"
     },
     {
@@ -18,7 +18,7 @@
       "url": "https://github.com/anthropics/claude-plugins-official",
       "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
       "language": "Python",
-      "total_stars": "11,534",
+      "total_stars": "11,543",
       "stars_today": "411"
     },
     {
@@ -28,7 +28,7 @@
       "url": "https://github.com/dimensionalOS/dimos",
       "description": "Dimensional is the agentic operating system for physical space. Vibecode humanoids, quadrupeds, drones, and other hardware platforms in natural language and build multi-agent systems that work seamlessly with physical input (cameras, lidar, actuators).",
       "language": "Python",
-      "total_stars": "1,001",
+      "total_stars": "1,006",
       "stars_today": "72"
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://github.com/p-e-w/heretic",
       "description": "Fully automatic censorship removal for language models",
       "language": "Python",
-      "total_stars": "14,161",
+      "total_stars": "14,176",
       "stars_today": "694"
     },
     {
@@ -48,7 +48,7 @@
       "url": "https://github.com/langflow-ai/openrag",
       "description": "OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.",
       "language": "Python",
-      "total_stars": "2,866",
+      "total_stars": "2,868",
       "stars_today": "564"
     },
     {
@@ -58,7 +58,7 @@
       "url": "https://github.com/lightpanda-io/browser",
       "description": "Lightpanda: the headless browser designed for AI and automation",
       "language": "Zig",
-      "total_stars": "17,531",
+      "total_stars": "17,546",
       "stars_today": "2069"
     },
     {
@@ -68,7 +68,7 @@
       "url": "https://github.com/msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
       "language": "Shell",
-      "total_stars": "44,894",
+      "total_stars": "44,943",
       "stars_today": "4280"
     },
     {
@@ -78,11 +78,46 @@
       "url": "https://github.com/fishaudio/fish-speech",
       "description": "SOTA Open Source TTS",
       "language": "Python",
-      "total_stars": "27,371",
+      "total_stars": "27,378",
       "stars_today": "381"
     }
   ],
   "descriptions": {
+    "volcengine/OpenViking": {
+      "overview": "专为 AI Agent 设计的开源上下文数据库。通过文件系统范式统一管理 Agent 需要的上下文（记忆、资源、技能），支持分层上下文交付和自我进化。",
+      "scenario": "AI Agent 开发者面临上下文管理混乱：记忆散落各处、资源难以组织、技能无法复用。需要一个系统化的解决方案。",
+      "solution": "文件系统式组织结构 + 分层上下文管理 + 自我进化机制 + 开放标准接口。"
+    },
+    "anthropics/claude-plugins-official": {
+      "overview": "Anthropic 官方维护的高质量 Claude Code 插件目录。精选插件经过严格筛选和测试。",
+      "scenario": "Claude Code 用户想扩展功能，但不知道哪些插件可靠、安全、好用。官方市场缺乏统一入口。",
+      "solution": "官方背书 + 质量保证 + 分类索引 + 安装指南 + 持续更新。"
+    },
+    "dimensionalOS/dimos": {
+      "overview": "物理空间的 Agent 操作系统。用自然语言控制人形机器人、四足机器人、无人机等硬件平台，构建多 Agent 系统。",
+      "scenario": "硬件开发者想用 AI 控制物理设备，但面临复杂 SDK、硬件兼容性、多设备协调等难题。",
+      "solution": "自然语言编程 + 多硬件抽象层 + 多 Agent 协调 + 实时传感器集成。"
+    },
+    "p-e-w/heretic": {
+      "overview": "全自动语言模型审查移除工具。针对模型内置的审查机制进行自动化处理。",
+      "scenario": "研究人员需要无审查限制的模型用于学术研究、安全测试，但现有模型都有内置限制。",
+      "solution": "自动化审查检测 + 精准移除算法 + 模型完整性保持 + 开源可审计。"
+    },
+    "langflow-ai/openrag": {
+      "overview": "一体化 RAG 平台。基于 Langflow、Docling、Opensearch 构建，提供开箱即用的检索增强生成解决方案。",
+      "scenario": "企业想快速部署 RAG 系统，但不想从零搭建各个组件：文档处理、向量检索、生成模型集成。",
+      "solution": "一站式安装 + 可视化流程设计 + 多数据源支持 + 生产级部署。"
+    },
+    "lightpanda-io/browser": {
+      "overview": "专为 AI 和自动化设计的无头浏览器。用 Zig 语言编写，高性能、低资源占用。",
+      "scenario": "AI Agent 需要浏览网页，但现有无头浏览器（Puppeteer、Playwright）资源消耗大、启动慢。",
+      "solution": "Zig 原生实现 + 极致性能优化 + 标准 CDP 协议 + AI 友好接口。"
+    },
+    "fishaudio/fish-speech": {
+      "overview": "SOTA 级开源文本转语音（TTS）系统。高质量、低延迟、多语言支持。",
+      "scenario": "开发者需要高质量 TTS 能力，但商业服务昂贵、开源方案质量差、延迟高。",
+      "solution": "SOTA 模型架构 + 多语言训练 + 实时推理优化 + 开源可定制。"
+    },
     "msitarzewski/agency-agents": {
       "overview": "61 个专业 AI Agent 的开源集合，覆盖工程、设计、营销、产品等 9 大领域。每个 Agent 都有独立人格、专属工作流、代码示例和成功指标。",
       "scenario": "适合需要专业 AI 协作的开发者和团队。当你发现通用提示词太泛、无法产出专业交付物时，可以召唤对应领域的专家 Agent。",
