@@ -36,9 +36,9 @@ ${TOP3}
 
 🌐 Dashboard: https://jn2020527.github.io/github-trending-dashboard/"
 
-# 发送到 Discord
-echo "📤 发送通知到 Discord..."
-openclaw message send --channel discord --target "channel:1480614916930146366" --message "$MESSAGE"
+# 发送到飞书
+echo "📤 发送通知到飞书..."
+openclaw message send --channel feishu --target "user:ou_ec11005dad638ec8a960ccbe5c88aa80" --message "$MESSAGE"
 
 if [ $? -eq 0 ]; then
     echo "✅ 通知发送成功"

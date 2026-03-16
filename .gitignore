@@ -1,0 +1,14 @@
+# 日志文件
+*.log
+cron.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# 临时文件
+*.tmp
+.DS_Store
