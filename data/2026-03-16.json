@@ -182,6 +182,21 @@
       "overview": "轻量级 PowerShell 脚本，移除 Windows 预装应用、禁用遥测、自定义系统。",
       "scenario": "新装的 Windows 有太多预装软件和广告，想清理干净。",
       "solution": "一键脚本，支持 Windows 10 和 11，可自定义清理选项。"
+    },
+    "shareAI-lab/learn-claude-code": {
+      "overview": "Claude Code 学习项目。从零到一构建一个迷你版 Claude Code Agent，完整实现核心功能。",
+      "scenario": "开发者想理解 Claude Code 的工作原理、学习 Agent 架构设计、掌握 AI 编程助手的实现方法。",
+      "solution": "渐进式教程 + 完整代码示例 + 架构解析 + 实战练习。"
+    },
+    "shanraisshan/claude-code-best-practice": {
+      "overview": "Claude Code 最佳实践集合。提供项目上下文模板、问题解决格式、开发方法论。",
+      "scenario": "想让 Claude Code 更好地理解项目、生成更符合规范的代码、遵循统一的开发流程。",
+      "solution": "Markdown 上下文模板 + 问题-解决方案格式 + 代码规范 + 工作流指南。"
+    },
+    "obra/superpowers": {
+      "overview": "实用的 Agent 技能框架和软件开发方法论。提供可复用的技能模式和最佳实践。",
+      "scenario": "AI Agent 开发者需要一套成熟的技能框架，避免从零设计、提高开发效率、保证质量。",
+      "solution": "模块化技能设计 + 标准化接口 + 测试框架 + 部署指南。"
     }
   }
 }

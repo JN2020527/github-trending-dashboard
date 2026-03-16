@@ -182,6 +182,21 @@ def get_descriptions():
             'scenario': '网络不可用或受限的场景：户外探险、应急响应、远程工作、隐私敏感环境。需要离线访问关键工具和知识，但现有方案依赖云端服务。',
             'solution': '自包含架构 + 离线 AI 模型 + 本地知识库 + 多工具集成 + 低功耗优化。'
         },
+        'shareAI-lab/learn-claude-code': {
+            'overview': 'Claude Code 学习项目。从零到一构建一个迷你版 Claude Code Agent，完整实现核心功能。',
+            'scenario': '开发者想理解 Claude Code 的工作原理、学习 Agent 架构设计、掌握 AI 编程助手的实现方法。',
+            'solution': '渐进式教程 + 完整代码示例 + 架构解析 + 实战练习。'
+        },
+        'shanraisshan/claude-code-best-practice': {
+            'overview': 'Claude Code 最佳实践集合。提供项目上下文模板、问题解决格式、开发方法论。',
+            'scenario': '想让 Claude Code 更好地理解项目、生成更符合规范的代码、遵循统一的开发流程。',
+            'solution': 'Markdown 上下文模板 + 问题-解决方案格式 + 代码规范 + 工作流指南。'
+        },
+        'obra/superpowers': {
+            'overview': '实用的 Agent 技能框架和软件开发方法论。提供可复用的技能模式和最佳实践。',
+            'scenario': 'AI Agent 开发者需要一套成熟的技能框架，避免从零设计、提高开发效率、保证质量。',
+            'solution': '模块化技能设计 + 标准化接口 + 测试框架 + 部署指南。'
+        },
         # 2026-03-15 新增项目
         'volcengine/OpenViking': {
             'overview': '专为 AI Agent 设计的开源上下文数据库。通过文件系统范式统一管理 Agent 需要的上下文（记忆、资源、技能），支持分层上下文交付和自我进化。',
