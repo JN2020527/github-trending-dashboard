@@ -22,3 +22,6 @@ LOG_FILE="$HOME/github-trending-dashboard/cron.log"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 更新完成"
     echo ""
 } >> "$LOG_FILE" 2>&1
+
+# 发送 Discord 通知
+bash ~/github-trending-dashboard/send-notification.sh >> "$LOG_FILE" 2>&1
