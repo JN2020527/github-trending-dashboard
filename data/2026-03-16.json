@@ -3,83 +3,83 @@
   "repos": [
     {
       "rank": 1,
-      "name": "lightpanda-io / browser",
-      "full_name": "lightpanda-io/browser",
-      "url": "https://github.com/lightpanda-io/browser",
-      "description": "Lightpanda: the headless browser designed for AI and automation",
-      "language": "Zig",
-      "total_stars": "18,928",
-      "stars_today": "1335"
-    },
-    {
-      "rank": 2,
-      "name": "Crosstalk-Solutions / project-nomad",
-      "full_name": "Crosstalk-Solutions/project-nomad",
-      "url": "https://github.com/Crosstalk-Solutions/project-nomad",
-      "description": "Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.",
-      "language": "TypeScript",
-      "total_stars": "1,212",
-      "stars_today": "205"
-    },
-    {
-      "rank": 3,
-      "name": "volcengine / OpenViking",
-      "full_name": "volcengine/OpenViking",
-      "url": "https://github.com/volcengine/OpenViking",
-      "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
-      "language": "Python",
-      "total_stars": "12,696",
-      "stars_today": "1870"
-    },
-    {
-      "rank": 4,
-      "name": "shareAI-lab / learn-claude-code",
-      "full_name": "shareAI-lab/learn-claude-code",
-      "url": "https://github.com/shareAI-lab/learn-claude-code",
-      "description": "Bash is all you need - A nano Claude Code–like agent, built from 0 to 1",
-      "language": "TypeScript",
-      "total_stars": "28,222",
-      "stars_today": "872"
-    },
-    {
-      "rank": 5,
-      "name": "shanraisshan / claude-code-best-practice",
-      "full_name": "shanraisshan/claude-code-best-practice",
-      "url": "https://github.com/shanraisshan/claude-code-best-practice",
-      "description": "practice made claude perfect",
-      "language": "HTML",
-      "total_stars": "17,207",
-      "stars_today": "851"
-    },
-    {
-      "rank": 6,
-      "name": "obra / superpowers",
-      "full_name": "obra/superpowers",
-      "url": "https://github.com/obra/superpowers",
-      "description": "An agentic skills framework & software development methodology that works.",
-      "language": "Shell",
-      "total_stars": "86,377",
-      "stars_today": "1867"
-    },
-    {
-      "rank": 7,
-      "name": "p-e-w / heretic",
-      "full_name": "p-e-w/heretic",
-      "url": "https://github.com/p-e-w/heretic",
-      "description": "Fully automatic censorship removal for language models",
-      "language": "Python",
-      "total_stars": "14,796",
-      "stars_today": "1062"
-    },
-    {
-      "rank": 8,
       "name": "666ghj / MiroFish",
       "full_name": "666ghj/MiroFish",
       "url": "https://github.com/666ghj/MiroFish",
       "description": "A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
       "language": "Python",
-      "total_stars": "27,668",
-      "stars_today": "2782"
+      "total_stars": "29,194",
+      "stars_today": "3257"
+    },
+    {
+      "rank": 2,
+      "name": "thedotmack / claude-mem",
+      "full_name": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
+      "language": "TypeScript",
+      "total_stars": "36,321",
+      "stars_today": "1017"
+    },
+    {
+      "rank": 3,
+      "name": "Crosstalk-Solutions / project-nomad",
+      "full_name": "Crosstalk-Solutions/project-nomad",
+      "url": "https://github.com/Crosstalk-Solutions/project-nomad",
+      "description": "Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.",
+      "language": "TypeScript",
+      "total_stars": "1,550",
+      "stars_today": "773"
+    },
+    {
+      "rank": 4,
+      "name": "obra / superpowers",
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "total_stars": "87,859",
+      "stars_today": "3142"
+    },
+    {
+      "rank": 5,
+      "name": "abhigyanpatwari / GitNexus",
+      "full_name": "abhigyanpatwari/GitNexus",
+      "url": "https://github.com/abhigyanpatwari/GitNexus",
+      "description": "GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration",
+      "language": "TypeScript",
+      "total_stars": "15,245",
+      "stars_today": "1867"
+    },
+    {
+      "rank": 6,
+      "name": "lightpanda-io / browser",
+      "full_name": "lightpanda-io/browser",
+      "url": "https://github.com/lightpanda-io/browser",
+      "description": "Lightpanda: the headless browser designed for AI and automation",
+      "language": "Zig",
+      "total_stars": "19,906",
+      "stars_today": "2089"
+    },
+    {
+      "rank": 7,
+      "name": "volcengine / OpenViking",
+      "full_name": "volcengine/OpenViking",
+      "url": "https://github.com/volcengine/OpenViking",
+      "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
+      "language": "Python",
+      "total_stars": "13,692",
+      "stars_today": "2014"
+    },
+    {
+      "rank": 8,
+      "name": "shareAI-lab / learn-claude-code",
+      "full_name": "shareAI-lab/learn-claude-code",
+      "url": "https://github.com/shareAI-lab/learn-claude-code",
+      "description": "Bash is all you need - A nano Claude Code–like agent, built from 0 to 1",
+      "language": "TypeScript",
+      "total_stars": "29,094",
+      "stars_today": "1542"
     }
   ],
   "descriptions": {
@@ -197,6 +197,16 @@
       "overview": "轻量级 PowerShell 脚本，移除 Windows 预装应用、禁用遥测、自定义系统。",
       "scenario": "新装的 Windows 有太多预装软件和广告，想清理干净。",
       "solution": "一键脚本，支持 Windows 10 和 11，可自定义清理选项。"
+    },
+    "thedotmack/claude-mem": {
+      "overview": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
+      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
+      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
+    },
+    "abhigyanpatwari/GitNexus": {
+      "overview": "GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration",
+      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
+      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
     }
   }
 }
