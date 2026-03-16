@@ -2,6 +2,7 @@
 """
 GitHub Trending 抓取脚本 - Scrapling 版本
 使用 Scrapling 优化 HTML 解析，带 fallback 到 BeautifulSoup
+支持 AI 自动生成项目描述
 """
 
 import json
@@ -14,12 +15,85 @@ import requests
 from bs4 import BeautifulSoup
 from scrapling.fetchers import Fetcher
 
+# OpenAI 客户端（用于自动生成描述）
+try:
+    from openai import OpenAI
+    HAS_OPENAI = True
+except ImportError:
+    HAS_OPENAI = False
+    logger.warning("⚠️ openai 未安装，自动生成描述功能禁用")
+
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+
+def generate_description_with_ai(repo):
+    """使用 AI 自动生成项目描述"""
+    if not HAS_OPENAI:
+        return None
+    
+    # 检查 API Key
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        logger.warning("⚠️ OPENAI_API_KEY 未设置，跳过自动生成")
+        return None
+    
+    try:
+        client = OpenAI(api_key=api_key)
+        
+        prompt = f"""请为以下 GitHub 项目生成中文描述：
+
+项目名：{repo['name']}
+原始描述：{repo['description']}
+语言：{repo['language']}
+今日新增：+{repo['stars_today']} stars
+
+请严格按照以下 JSON 格式输出（不要添加任何其他内容）：
+{{
+  "overview": "一句话项目概述（50字以内）",
+  "scenario": "具体用户场景和痛点（80字以内）",
+  "solution": "核心解决方案（60字以内）"
+}}
+
+要求：
+1. overview：简洁概括项目是什么
+2. scenario：描述具体的使用场景和用户痛点
+3. solution：列出核心功能或技术方案"""
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "你是一个技术文档撰写专家，擅长用简洁的中文描述开源项目。"},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=300
+        )
+        
+        content = response.choices[0].message.content.strip()
+        
+        # 尝试解析 JSON
+        # 去除可能的 markdown 代码块标记
+        if content.startswith('```'):
+            content = content.split('```')[1]
+            if content.startswith('json'):
+                content = content[4:]
+        
+        desc = json.loads(content)
+        
+        logger.info(f"✅ AI 生成描述成功: {repo['name']}")
+        return desc
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"❌ JSON 解析失败: {e}")
+        return None
+    except Exception as e:
+        logger.error(f"❌ AI 生成失败: {e}")
+        return None
 
 
 def fetch_with_scrapling():
@@ -314,7 +388,8 @@ def get_available_dates():
 
 
 def save_data(repos):
-    """保存数据到 JSON 文件"""
+    """保存数据到 JSON 文件，    自动为缺失描述的项目生成描述
+    """
     # 获取当前日期
     now = datetime.now()
     date_str = now.strftime("%Y-%m-%d")
@@ -323,11 +398,46 @@ def save_data(repos):
     data_dir = Path('data')
     data_dir.mkdir(exist_ok=True)
     
+    # 获取现有描述
+    descriptions = get_descriptions()
+    
+    # 检查并生成缺失的描述
+    logger.info("🔍 检查项目描述完整性...")
+    new_descriptions = {}
+    
+    for repo in repos:
+        full_name = repo['full_name']
+        if full_name not in descriptions:
+            logger.info(f"⚠️ 缺失描述: {full_name}")
+            
+            # 尝试使用 AI 生成
+            logger.info(f"🤖 正在使用 AI 生成描述: {full_name}")
+            ai_desc = generate_description_with_ai(repo)
+            
+            if ai_desc:
+                new_descriptions[full_name] = ai_desc
+                descriptions[full_name] = ai_desc
+                logger.info(f"✅ 已生成: {full_name}")
+            else:
+                # 使用默认模板
+                logger.warning(f"⚠️ AI 生成失败，使用默认模板: {full_name}")
+                descriptions[full_name] = {
+                    'overview': repo.get('description', '暂无描述'),
+                    'scenario': '当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。',
+                    'solution': '从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。'
+                }
+    
+    # 如果有新生成的描述，更新描述字典文件
+    if new_descriptions:
+        logger.info(f"📝 更新描述字典，新增 {len(new_descriptions)} 个项目")
+        # 将新描述保存到文件中（追加到 get_descriptions 函数）
+        update_descriptions_file(new_descriptions)
+    
     # 准备数据
     data = {
         'date': date_str,
         'repos': repos,
-        'descriptions': get_descriptions()
+        'descriptions': descriptions
     }
     
     # 保存到日期文件
@@ -350,6 +460,52 @@ def save_data(repos):
     with open(dates_file, 'w', encoding='utf-8') as f:
         json.dump({'dates': available_dates}, f, ensure_ascii=False, indent=2)
     logger.info(f"📝 已更新 data/dates.json ({len(available_dates)} 个日期)")
+
+
+def update_descriptions_file(new_descriptions):
+    """将新生成的描述追加到描述文件"""
+    script_file = Path(__file__)
+    
+    # 读取当前脚本内容
+    with open(script_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # 找到 get_descriptions 函数的 return 语句
+    # 在第一个项目之前插入新描述
+    lines = content.split('\n')
+    insert_index = None
+    
+    for i, line in enumerate(lines):
+        if 'def get_descriptions():' in line:
+            # 找到函数后的第一个 return {
+            for j in range(i, min(i + 20, len(lines))):
+                if 'return {' in lines[j]:
+                    insert_index = j + 1
+                    break
+            break
+    
+    if insert_index is None:
+        logger.error("❌ 无法找到插入位置")
+        return
+    
+    # 生成新描述的代码
+    new_lines = []
+    for full_name, desc in new_descriptions.items():
+        new_lines.append(f"        '{full_name}': {{")
+        new_lines.append(f"            'overview': '{desc['overview']}',")
+        new_lines.append(f"            'scenario': '{desc['scenario']}',")
+        new_lines.append(f"            'solution': '{desc['solution']}'")
+        new_lines.append("        },")
+    
+    # 插入新描述
+    for i, line in enumerate(new_lines):
+        lines.insert(insert_index + i, line)
+    
+    # 写回文件
+    with open(script_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines))
+    
+    logger.info(f"✅ 已将 {len(new_descriptions)} 个描述写入脚本文件")
 
 
 def git_commit_and_push():

@@ -21,9 +21,11 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4
+          pip install requests beautifulsoup4 scrapling openai
       
       - name: Run update script
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python update_trending.py
       
       - name: Commit and push changes
