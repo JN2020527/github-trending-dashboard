@@ -176,6 +176,12 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        # 2026-03-16 新增项目
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': '离线生存计算项目。内置关键工具、知识库和 AI 能力，确保在任何时间、任何地点都能获取信息和做出决策。',
+            'scenario': '网络不可用或受限的场景：户外探险、应急响应、远程工作、隐私敏感环境。需要离线访问关键工具和知识，但现有方案依赖云端服务。',
+            'solution': '自包含架构 + 离线 AI 模型 + 本地知识库 + 多工具集成 + 低功耗优化。'
+        },
         # 2026-03-15 新增项目
         'volcengine/OpenViking': {
             'overview': '专为 AI Agent 设计的开源上下文数据库。通过文件系统范式统一管理 Agent 需要的上下文（记忆、资源、技能），支持分层上下文交付和自我进化。',
