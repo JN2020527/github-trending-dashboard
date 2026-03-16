@@ -227,16 +227,9 @@ def main():
         logger.info(f"   方案: {desc['solution']}")
         logger.info("")
     
-    # 询问用户是否保存
-    logger.info("❓ 是否保存这些描述到脚本文件？(y/n)")
-    answer = input().strip().lower()
-    
-    if answer == 'y':
-        update_script_file(new_descriptions)
-        logger.info("✅ 已保存到脚本文件")
-        logger.info("💡 提示: 运行 'git add -A && git commit -m \"feat: 添加新项目描述\" && git push' 推送到 GitHub")
-    else:
-        logger.info("❌ 已取消保存")
+    # 自动保存
+    update_script_file(new_descriptions)
+    logger.info("✅ 已自动保存到脚本文件")
 
 
 if __name__ == '__main__':
