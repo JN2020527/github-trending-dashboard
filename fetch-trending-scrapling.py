@@ -250,6 +250,46 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'lightpanda-io/browser': {
+            'overview': 'Lightpanda是一个为AI和自动化设计的无头浏览器，使用Zig语言构建。',
+            'scenario': '开发者需要在无界面的环境中进行网页抓取、自动化测试或数据提取，但现有工具效率低下或不支持特定需求。',
+            'solution': 'Lightpanda提供高效的无头浏览功能，支持快速网页渲染和数据处理，适合自动化任务和AI应用。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款自给自足的离线生存计算机，包含关键工具和知识。',
+            'scenario': '在偏远地区或灾难情况下，用户可能缺乏信息和资源。此项目帮助用户随时获取生存知识和工具，提升应对能力。',
+            'solution': '该项目集成了知识库、实用工具和人工智能，确保用户在任何时间、任何地点都能获得重要信息和支持。'
+        },
+        'volcengine/OpenViking': {
+            'overview': 'OpenViking是一个专为AI代理设计的开源上下文数据库，提供统一的上下文管理。',
+            'scenario': '在AI代理（如openclaw）中，管理上下文（记忆、资源和技能）往往复杂且碎片化，影响代理的性能和适应能力。',
+            'solution': 'OpenViking采用文件系统范式，实现分层上下文传递和自我演化，简化上下文管理。'
+        },
+        'shareAI-lab/learn-claude-code': {
+            'overview': '一个基于 TypeScript 的轻量级 Claude Code 类代理，从零开始构建，简单易用。',
+            'scenario': '开发者在编写 Bash 脚本时常遇到复杂的代码逻辑，难以快速实现自动化任务。该项目旨在简化这一过程，为用户提供智能化的代码辅助。',
+            'solution': '通过使用 TypeScript 开发的智能代理，提供代码自动生成和建议，提升 Bash 脚本编写的效率和准确性。'
+        },
+        'shanraisshan/claude-code-best-practice': {
+            'overview': '这是一个旨在提升代码编写最佳实践的开源项目。',
+            'scenario': '开发者在编写代码时常常缺乏规范，导致代码质量参差不齐，难以维护和协作。该项目帮助开发者学习和应用最佳实践。',
+            'solution': '提供一系列代码示例和指导，帮助开发者掌握高效、可维护的编码技巧。'
+        },
+        'obra/superpowers': {
+            'overview': 'superpowers 是一个代理技能框架和软件开发方法论，旨在提升开发效率。',
+            'scenario': '开发者在项目管理和技能提升过程中常常面临方法不明确、效率低下的问题，导致进度延误和资源浪费。',
+            'solution': '提供一套系统化的开发方法和技能框架，帮助团队优化工作流程，提升项目执行力和协作效率。'
+        },
+        'p-e-w/heretic': {
+            'overview': 'heretic 是一个针对语言模型的全自动审查内容移除工具。',
+            'scenario': '在使用语言模型时，用户常常遇到审查导致的信息缺失，影响模型的表现和应用。heretic 旨在解决这一问题，帮助用户获取更完整的信息。',
+            'solution': '该项目通过先进的算法自动检测并去除审查内容，提升语言模型的输出质量和准确性。'
+        },
+        '666ghj/MiroFish': {
+            'overview': 'MiroFish是一个简单而通用的群体智能引擎，能够进行各种预测。',
+            'scenario': '在数据分析、市场预测和智能决策中，用户常常面临复杂的数据模式和不确定性，MiroFish可以帮助用户从数据中提取有价值的洞察。',
+            'solution': '通过群体智能算法，MiroFish实现高效的预测功能，适用于多种领域，支持自定义模型和数据输入。'
+        },
         # 2026-03-16 新增项目
         'Crosstalk-Solutions/project-nomad': {
             'overview': '离线生存计算项目。内置关键工具、知识库和 AI 能力，确保在任何时间、任何地点都能获取信息和做出决策。',
