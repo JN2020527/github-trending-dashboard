@@ -8,7 +8,7 @@
       "url": "https://github.com/lightpanda-io/browser",
       "description": "Lightpanda: the headless browser designed for AI and automation",
       "language": "Zig",
-      "total_stars": "18,521",
+      "total_stars": "18,612",
       "stars_today": "1335"
     },
     {
@@ -18,7 +18,7 @@
       "url": "https://github.com/Crosstalk-Solutions/project-nomad",
       "description": "Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.",
       "language": "TypeScript",
-      "total_stars": "1,080",
+      "total_stars": "1,117",
       "stars_today": "205"
     },
     {
@@ -28,7 +28,7 @@
       "url": "https://github.com/volcengine/OpenViking",
       "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
       "language": "Python",
-      "total_stars": "12,341",
+      "total_stars": "12,415",
       "stars_today": "1870"
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://github.com/shareAI-lab/learn-claude-code",
       "description": "Bash is all you need - A nano Claude Code–like agent, built from 0 to 1",
       "language": "TypeScript",
-      "total_stars": "27,862",
+      "total_stars": "27,917",
       "stars_today": "872"
     },
     {
@@ -48,7 +48,7 @@
       "url": "https://github.com/shanraisshan/claude-code-best-practice",
       "description": "practice made claude perfect",
       "language": "HTML",
-      "total_stars": "16,947",
+      "total_stars": "17,005",
       "stars_today": "851"
     },
     {
@@ -58,7 +58,7 @@
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
       "language": "Shell",
-      "total_stars": "85,812",
+      "total_stars": "85,915",
       "stars_today": "1867"
     },
     {
@@ -68,7 +68,7 @@
       "url": "https://github.com/p-e-w/heretic",
       "description": "Fully automatic censorship removal for language models",
       "language": "Python",
-      "total_stars": "14,681",
+      "total_stars": "14,707",
       "stars_today": "1062"
     },
     {
@@ -78,11 +78,16 @@
       "url": "https://github.com/666ghj/MiroFish",
       "description": "A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
       "language": "Python",
-      "total_stars": "27,163",
+      "total_stars": "27,251",
       "stars_today": "2782"
     }
   ],
   "descriptions": {
+    "Crosstalk-Solutions/project-nomad": {
+      "overview": "离线生存计算项目。内置关键工具、知识库和 AI 能力，确保在任何时间、任何地点都能获取信息和做出决策。",
+      "scenario": "网络不可用或受限的场景：户外探险、应急响应、远程工作、隐私敏感环境。需要离线访问关键工具和知识，但现有方案依赖云端服务。",
+      "solution": "自包含架构 + 离线 AI 模型 + 本地知识库 + 多工具集成 + 低功耗优化。"
+    },
     "volcengine/OpenViking": {
       "overview": "专为 AI Agent 设计的开源上下文数据库。通过文件系统范式统一管理 Agent 需要的上下文（记忆、资源、技能），支持分层上下文交付和自我进化。",
       "scenario": "AI Agent 开发者面临上下文管理混乱：记忆散落各处、资源难以组织、技能无法复用。需要一个系统化的解决方案。",
