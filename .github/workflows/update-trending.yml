@@ -1,10 +1,7 @@
-name: Update GitHub Trending (Deploy Only)
+name: Update GitHub Trending (Disabled)
 
 on:
-  schedule:
-    # 每天 UTC 00:00 运行（北京时间 08:00）
-    - cron: '0 0 * * *'
-  workflow_dispatch:  # 支持手动触发
+  workflow_dispatch:  # 只支持手动触发，禁用自动运行
 
 jobs:
   deploy:
@@ -14,22 +11,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+      - name: Note
         run: |
-          pip install requests beautifulsoup4
-      
-      - name: Fetch trending data (no AI)
-        run: python update_trending.py
-      
-      - name: Deploy to GitHub Pages
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add index.html data/
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: deploy trending data $(date +%Y-%m-%d) [skip ci]"
-          git push
+          echo "⚠️ 此 workflow 已禁用自动运行"
+          echo "✅ 数据由本地定时任务生成后推送"
+          echo "📅 本地任务时间：每天 9:00（北京时间）"
