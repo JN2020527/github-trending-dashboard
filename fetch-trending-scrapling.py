@@ -250,6 +250,46 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        '666ghj/MiroFish': {
+            'overview': 'MiroFish是一个简洁通用的群体智能引擎，能够进行各种预测。',
+            'scenario': '用户可以在金融、气候、交通等领域利用该引擎进行数据预测，帮助决策，但传统方法往往复杂、效率低下。',
+            'solution': 'MiroFish通过先进的群体智能算法，提供快速、准确的预测，支持多种应用场景。'
+        },
+        'thedotmack/claude-mem': {
+            'overview': 'Claude-mem 是一个 Claude 代码插件，自动捕捉编码过程中的操作并优化上下文。',
+            'scenario': '开发者在编码时常常需要回忆之前的工作，但上下文信息容易遗忘，影响效率。该插件帮助用户自动记录和恢复这些信息。',
+            'solution': '通过 Claude 的 agent-sdk，自动捕捉和压缩编码过程中的关键信息，并在未来会话中注入相关上下文。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款离线生存计算机，集成必要工具、知识和人工智能，随时随地为用户提供支持。',
+            'scenario': '在偏远地区或自然灾害中，用户可能缺乏信息和资源，无法获取生存所需的知识和工具，面临生存困境。',
+            'solution': '该项目提供离线访问的生存工具和知识库，并结合人工智能帮助用户获取实时信息和应对策略。'
+        },
+        'obra/superpowers': {
+            'overview': 'superpowers是一个有效的技能框架和软件开发方法论，旨在提升开发效率。',
+            'scenario': '开发者在项目管理中常面临技能不足、协作不畅和效率低下的问题，导致项目进展缓慢。',
+            'solution': '提供系统化的技能提升框架和方法论，帮助开发团队高效协作，提升软件开发质量与速度。'
+        },
+        'abhigyanpatwari/GitNexus': {
+            'overview': 'GitNexus 是一款零服务器的代码智能引擎，可以在浏览器中创建知识图谱。',
+            'scenario': '用户只需将 GitHub 仓库或 ZIP 文件导入，便能轻松探索代码，解决传统工具无法快速获取代码结构和关系的问题。',
+            'solution': 'GitNexus 通过在浏览器中生成互动知识图谱，并内置 Graph RAG Agent，实现高效的代码分析和探索。'
+        },
+        'lightpanda-io/browser': {
+            'overview': 'Lightpanda是一个为AI和自动化设计的无头浏览器。',
+            'scenario': '开发者在进行网页自动化测试、数据抓取时，常常需要一个轻量级且高效的浏览器。传统浏览器占用资源大，操作繁琐，影响开发效率。',
+            'solution': 'Lightpanda提供高效的无头浏览功能，支持快速页面加载和自动化操作，极大提升开发者的工作效率。'
+        },
+        'volcengine/OpenViking': {
+            'overview': 'OpenViking是一个开源上下文数据库，专为AI代理（如openclaw）设计。',
+            'scenario': '在复杂的AI应用中，代理需要有效管理上下文信息（如记忆、资源和技能），以便适应不同场景并提供精准服务。现有解决方案往往难以满足这一需求。',
+            'solution': 'OpenViking通过文件系统范式统一管理上下文，实现层级上下文交付和自我演化，简化了AI代理的信息管理。'
+        },
+        'shareAI-lab/learn-claude-code': {
+            'overview': 'learn-claude-code是一个基于TypeScript构建的轻量级智能助手，灵感来源于Claude Code。',
+            'scenario': '用户在开发过程中常常需要快速获取代码示例和建议，现有工具往往复杂或不够直观，影响开发效率。',
+            'solution': '该项目通过简化的命令行界面，提供智能代码建议和示例，帮助开发者快速解决问题。'
+        },
         'lightpanda-io/browser': {
             'overview': 'Lightpanda是一个为AI和自动化设计的无头浏览器，使用Zig语言构建。',
             'scenario': '开发者需要在无界面的环境中进行网页抓取、自动化测试或数据提取，但现有工具效率低下或不支持特定需求。',
