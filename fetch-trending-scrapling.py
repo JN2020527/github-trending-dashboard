@@ -36,8 +36,17 @@ def generate_description_with_ai(repo):
     if not HAS_OPENAI:
         return None
     
-    # 检查 API Key
+    # 检查 API Key（优先环境变量，其次从 ~/.openclaw/.env.openai 读取）
     api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        # 从 OpenClaw 环境文件读取
+        env_file = os.path.expanduser('~/.openclaw/workspace/.env.openai')
+        if os.path.exists(env_file):
+            with open(env_file) as f:
+                for line in f:
+                    if line.startswith('OPENAI_API_KEY='):
+                        api_key = line.strip().split('=', 1)[1]
+                        break
     if not api_key:
         logger.warning("⚠️ OPENAI_API_KEY 未设置，跳过自动生成")
         return None
