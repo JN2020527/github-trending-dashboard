@@ -260,6 +260,46 @@ def get_descriptions():
     """项目描述数据库"""
     return {
         '666ghj/MiroFish': {
+            'overview': 'MiroFish 是一个简洁通用的群体智能引擎，能够进行各类预测。',
+            'scenario': '用户可以在数据分析、市场预测等领域应用 MiroFish，提升决策准确性和效率，解决传统模型灵活性不足的问题。',
+            'solution': 'MiroFish 采用先进的群体智能算法，支持多种数据输入，实时生成高精度预测结果。'
+        },
+        'thedotmack/claude-mem': {
+            'overview': 'Claude-mem 是一个 Claude 代码插件，自动记录编码过程中的所有操作，并利用 AI 压缩信息。',
+            'scenario': '开发者在编码时常常需要回顾之前的操作和上下文，手动记录信息既繁琐又容易遗漏，影响工作效率。',
+            'solution': '该插件自动捕捉编码过程，使用 Claude 的 agent-sdk 压缩信息，并将相关上下文注入未来会话，提升编码效率。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款自给自足的离线生存计算机，集成了重要工具、知识和人工智能。',
+            'scenario': '用户在偏远地区或灾后环境中，可能面临缺乏信息和资源的问题，无法获取必要的生存知识和工具。',
+            'solution': '该项目提供离线访问的生存工具和知识库，以及AI助手，确保用户随时随地获取关键信息。'
+        },
+        'obra/superpowers': {
+            'overview': '一个有效的代理技能框架和软件开发方法论。',
+            'scenario': '开发团队在项目管理中常面临技能分配不均和效率低下的问题，影响项目进度和质量。',
+            'solution': '提供系统化的技能框架，优化团队协作和任务分配，提高软件开发效率。'
+        },
+        'abhigyanpatwari/GitNexus': {
+            'overview': 'GitNexus 是一款零服务器的代码智能引擎，完全在浏览器中运行，帮助用户创建知识图谱。',
+            'scenario': '用户可以将 GitHub 仓库或 ZIP 文件导入 GitNexus，适用于开发者在代码探索中快速获取项目结构和依赖关系，提升工作效率。',
+            'solution': '通过交互式知识图谱和内置的 Graph RAG Agent，GitNexus 让代码分析和理解变得更加简单直观。'
+        },
+        'lightpanda-io/browser': {
+            'overview': 'Lightpanda 是一款专为人工智能和自动化设计的无头浏览器。',
+            'scenario': '开发者在进行网页抓取、自动化测试或数据分析时，常面临浏览器交互复杂、效率低下的问题。',
+            'solution': 'Lightpanda 提供高性能的无头浏览功能，支持自动化操作，简化网页处理流程，提升效率。'
+        },
+        'volcengine/OpenViking': {
+            'overview': 'OpenViking是一个开源的上下文数据库，专为AI代理（如openclaw）设计。',
+            'scenario': '在复杂的AI应用中，代理需要高效管理上下文信息，包括记忆、资源和技能，传统方式难以满足动态和层次化的需求。',
+            'solution': 'OpenViking通过文件系统范式统一管理上下文，支持层次化上下文传递与自我演化，提升AI代理的智能化水平。'
+        },
+        'shareAI-lab/learn-claude-code': {
+            'overview': '一个基于 TypeScript 的轻量级 Claude Code 风格代理，旨在简化 Bash 脚本编写。',
+            'scenario': '开发者在编写 Bash 脚本时常面临语法复杂和功能限制的问题，本项目提供了类似 Claude 的智能助手，帮助用户快速生成脚本。',
+            'solution': '通过智能代码生成和自动补全功能，提升 Bash 脚本编写效率，减少错误率。'
+        },
+        '666ghj/MiroFish': {
             'overview': 'MiroFish是一个简洁通用的群体智能引擎，能够进行各种预测。',
             'scenario': '用户可以在金融、气候、交通等领域利用该引擎进行数据预测，帮助决策，但传统方法往往复杂、效率低下。',
             'solution': 'MiroFish通过先进的群体智能算法，提供快速、准确的预测，支持多种应用场景。'
