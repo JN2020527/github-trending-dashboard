@@ -8,7 +8,7 @@
       "url": "https://github.com/666ghj/MiroFish",
       "description": "A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
       "language": "Python",
-      "total_stars": "29,988",
+      "total_stars": "30,022",
       "stars_today": "3260"
     },
     {
@@ -18,7 +18,7 @@
       "url": "https://github.com/thedotmack/claude-mem",
       "description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
       "language": "TypeScript",
-      "total_stars": "36,808",
+      "total_stars": "36,824",
       "stars_today": "1045"
     },
     {
@@ -28,7 +28,7 @@
       "url": "https://github.com/Crosstalk-Solutions/project-nomad",
       "description": "Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.",
       "language": "TypeScript",
-      "total_stars": "1,827",
+      "total_stars": "1,839",
       "stars_today": "775"
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
       "language": "Shell",
-      "total_stars": "88,618",
+      "total_stars": "88,662",
       "stars_today": "3152"
     },
     {
@@ -48,7 +48,7 @@
       "url": "https://github.com/abhigyanpatwari/GitNexus",
       "description": "GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration",
       "language": "TypeScript",
-      "total_stars": "15,603",
+      "total_stars": "15,616",
       "stars_today": "1860"
     },
     {
@@ -58,7 +58,7 @@
       "url": "https://github.com/lightpanda-io/browser",
       "description": "Lightpanda: the headless browser designed for AI and automation",
       "language": "Zig",
-      "total_stars": "20,220",
+      "total_stars": "20,236",
       "stars_today": "2086"
     },
     {
@@ -68,7 +68,7 @@
       "url": "https://github.com/volcengine/OpenViking",
       "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.",
       "language": "Python",
-      "total_stars": "14,156",
+      "total_stars": "14,174",
       "stars_today": "2012"
     },
     {
@@ -78,20 +78,40 @@
       "url": "https://github.com/shareAI-lab/learn-claude-code",
       "description": "Bash is all you need - A nano Claude Code–like agent, built from 0 to 1",
       "language": "TypeScript",
-      "total_stars": "29,296",
+      "total_stars": "29,311",
       "stars_today": "1535"
     }
   ],
   "descriptions": {
-    "lightpanda-io/browser": {
-      "overview": "专为 AI 和自动化设计的无头浏览器。用 Zig 语言编写，高性能、低资源占用。",
-      "scenario": "AI Agent 需要浏览网页，但现有无头浏览器（Puppeteer、Playwright）资源消耗大、启动慢。",
-      "solution": "Zig 原生实现 + 极致性能优化 + 标准 CDP 协议 + AI 友好接口。"
+    "666ghj/MiroFish": {
+      "overview": "基于多智能体技术的 AI 预测引擎。上传种子材料（新闻、报告、小说），自动构建平行数字世界，成千上万智能体在其中交互演化。",
+      "scenario": "决策者需要零风险试错环境：政策推演、公关策略、舆情预测。普通用户也可以推演小说结局或探索脑洞。",
+      "solution": "GraphRAG 构建知识图谱 → 生成独立人格智能体 → 双平台并行模拟 → ReportAgent 生成可交互的预测报告。"
+    },
+    "thedotmack/claude-mem": {
+      "overview": "Claude-mem 是一个 Claude 代码插件，自动捕捉编码过程中的操作并优化上下文。",
+      "scenario": "开发者在编码时常常需要回忆之前的工作，但上下文信息容易遗忘，影响效率。该插件帮助用户自动记录和恢复这些信息。",
+      "solution": "通过 Claude 的 agent-sdk，自动捕捉和压缩编码过程中的关键信息，并在未来会话中注入相关上下文。"
     },
     "Crosstalk-Solutions/project-nomad": {
       "overview": "离线生存计算项目。内置关键工具、知识库和 AI 能力，确保在任何时间、任何地点都能获取信息和做出决策。",
       "scenario": "网络不可用或受限的场景：户外探险、应急响应、远程工作、隐私敏感环境。需要离线访问关键工具和知识，但现有方案依赖云端服务。",
       "solution": "自包含架构 + 离线 AI 模型 + 本地知识库 + 多工具集成 + 低功耗优化。"
+    },
+    "obra/superpowers": {
+      "overview": "实用的 Agent 技能框架和软件开发方法论。提供可复用的技能模式和最佳实践。",
+      "scenario": "AI Agent 开发者需要一套成熟的技能框架，避免从零设计、提高开发效率、保证质量。",
+      "solution": "模块化技能设计 + 标准化接口 + 测试框架 + 部署指南。"
+    },
+    "abhigyanpatwari/GitNexus": {
+      "overview": "GitNexus 是一款零服务器的代码智能引擎，可以在浏览器中创建知识图谱。",
+      "scenario": "用户只需将 GitHub 仓库或 ZIP 文件导入，便能轻松探索代码，解决传统工具无法快速获取代码结构和关系的问题。",
+      "solution": "GitNexus 通过在浏览器中生成互动知识图谱，并内置 Graph RAG Agent，实现高效的代码分析和探索。"
+    },
+    "lightpanda-io/browser": {
+      "overview": "专为 AI 和自动化设计的无头浏览器。用 Zig 语言编写，高性能、低资源占用。",
+      "scenario": "AI Agent 需要浏览网页，但现有无头浏览器（Puppeteer、Playwright）资源消耗大、启动慢。",
+      "solution": "Zig 原生实现 + 极致性能优化 + 标准 CDP 协议 + AI 友好接口。"
     },
     "volcengine/OpenViking": {
       "overview": "专为 AI Agent 设计的开源上下文数据库。通过文件系统范式统一管理 Agent 需要的上下文（记忆、资源、技能），支持分层上下文交付和自我进化。",
@@ -108,20 +128,10 @@
       "scenario": "想让 Claude Code 更好地理解项目、生成更符合规范的代码、遵循统一的开发流程。",
       "solution": "Markdown 上下文模板 + 问题-解决方案格式 + 代码规范 + 工作流指南。"
     },
-    "obra/superpowers": {
-      "overview": "实用的 Agent 技能框架和软件开发方法论。提供可复用的技能模式和最佳实践。",
-      "scenario": "AI Agent 开发者需要一套成熟的技能框架，避免从零设计、提高开发效率、保证质量。",
-      "solution": "模块化技能设计 + 标准化接口 + 测试框架 + 部署指南。"
-    },
     "p-e-w/heretic": {
       "overview": "全自动语言模型审查移除工具。针对模型内置的审查机制进行自动化处理。",
       "scenario": "研究人员需要无审查限制的模型用于学术研究、安全测试，但现有模型都有内置限制。",
       "solution": "自动化审查检测 + 精准移除算法 + 模型完整性保持 + 开源可审计。"
-    },
-    "666ghj/MiroFish": {
-      "overview": "基于多智能体技术的 AI 预测引擎。上传种子材料（新闻、报告、小说），自动构建平行数字世界，成千上万智能体在其中交互演化。",
-      "scenario": "决策者需要零风险试错环境：政策推演、公关策略、舆情预测。普通用户也可以推演小说结局或探索脑洞。",
-      "solution": "GraphRAG 构建知识图谱 → 生成独立人格智能体 → 双平台并行模拟 → ReportAgent 生成可交互的预测报告。"
     },
     "anthropics/claude-plugins-official": {
       "overview": "Anthropic 官方维护的高质量 Claude Code 插件目录。精选插件经过严格筛选和测试。",
@@ -197,16 +207,6 @@
       "overview": "轻量级 PowerShell 脚本，移除 Windows 预装应用、禁用遥测、自定义系统。",
       "scenario": "新装的 Windows 有太多预装软件和广告，想清理干净。",
       "solution": "一键脚本，支持 Windows 10 和 11，可自定义清理选项。"
-    },
-    "thedotmack/claude-mem": {
-      "overview": "Claude-mem 是一个 Claude 代码插件，自动捕捉编码过程中的操作并优化上下文。",
-      "scenario": "开发者在编码时常常需要回忆之前的工作，但上下文信息容易遗忘，影响效率。该插件帮助用户自动记录和恢复这些信息。",
-      "solution": "通过 Claude 的 agent-sdk，自动捕捉和压缩编码过程中的关键信息，并在未来会话中注入相关上下文。"
-    },
-    "abhigyanpatwari/GitNexus": {
-      "overview": "GitNexus 是一款零服务器的代码智能引擎，可以在浏览器中创建知识图谱。",
-      "scenario": "用户只需将 GitHub 仓库或 ZIP 文件导入，便能轻松探索代码，解决传统工具无法快速获取代码结构和关系的问题。",
-      "solution": "GitNexus 通过在浏览器中生成互动知识图谱，并内置 Graph RAG Agent，实现高效的代码分析和探索。"
     }
   }
 }
