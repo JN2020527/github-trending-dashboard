@@ -199,14 +199,14 @@
       "solution": "一键脚本，支持 Windows 10 和 11，可自定义清理选项。"
     },
     "thedotmack/claude-mem": {
-      "overview": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
+      "overview": "Claude-mem 是一个 Claude 代码插件，自动捕捉编码过程中的操作并优化上下文。",
+      "scenario": "开发者在编码时常常需要回忆之前的工作，但上下文信息容易遗忘，影响效率。该插件帮助用户自动记录和恢复这些信息。",
+      "solution": "通过 Claude 的 agent-sdk，自动捕捉和压缩编码过程中的关键信息，并在未来会话中注入相关上下文。"
     },
     "abhigyanpatwari/GitNexus": {
-      "overview": "GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
+      "overview": "GitNexus 是一款零服务器的代码智能引擎，可以在浏览器中创建知识图谱。",
+      "scenario": "用户只需将 GitHub 仓库或 ZIP 文件导入，便能轻松探索代码，解决传统工具无法快速获取代码结构和关系的问题。",
+      "solution": "GitNexus 通过在浏览器中生成互动知识图谱，并内置 Graph RAG Agent，实现高效的代码分析和探索。"
     }
   }
 }
