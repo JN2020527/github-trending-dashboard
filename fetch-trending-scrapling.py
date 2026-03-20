@@ -259,6 +259,61 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'opendataloader-project/opendataloader-pdf': {
+            'overview': 'opendataloader-pdf是一个用于处理PDF文件的开源项目，旨在为AI提供可用数据。',
+            'scenario': '用户在处理大量PDF文档时常面临数据提取困难，影响信息获取和分析效率。',
+            'solution': '该项目自动化PDF可访问性，提供高效的PDF解析功能，便于生成AI可用的数据。'
+        },
+        'mobile-dev-inc/Maestro': {
+            'overview': 'Maestro 是一个简化移动和网页端的端到端自动化测试工具。',
+            'scenario': '开发者在进行移动和网页应用测试时，常面临复杂的自动化流程，耗时且易出错，影响开发效率。',
+            'solution': '通过简洁的脚本和强大的框架，Maestro 提供易用的自动化测试功能，支持快速集成和高效执行。'
+        },
+        'louis-e/arnis': {
+            'overview': '一个开源项目，用于在Minecraft中生成高细节的真实世界地点。',
+            'scenario': '玩家希望在Minecraft中重现真实世界的地点，以增加游戏的沉浸感和探索乐趣，但现有工具无法满足高细节需求。',
+            'solution': '该项目利用Rust语言生成高精度的真实地理位置，并将其转换为Minecraft可用的地图数据。'
+        },
+        'unslothai/unsloth': {
+            'overview': '一个统一的网页用户界面，用于本地训练和运行开源模型，如Qwen、DeepSeek、gpt-oss和Gemma。',
+            'scenario': '用户希望在本地环境中轻松训练和运行多个开源AI模型，但面对复杂的设置和操作流程感到困扰。',
+            'solution': '提供统一的Web界面，简化模型训练和运行的流程，支持多种开源模型，提升用户体验。'
+        },
+        'newton-physics/newton': {
+            'overview': 'newton 是一个开源的物理仿真引擎，利用 NVIDIA Warp 加速，专为机器人和仿真研究者设计。',
+            'scenario': '机器人开发者和仿真研究人员需要高效的物理仿真工具，以便在真实环境中测试算法和设计，传统的仿真引擎往往性能不足，难以满足需求。',
+            'solution': 'newton 提供 GPU 加速的物理模拟，支持复杂的物理交互，为用户提供高效、逼真的仿真体验。'
+        },
+        'shadps4-emu/shadPS4': {
+            'overview': 'shadPS4是一个用于Windows、Linux和macOS的PlayStation 4模拟器，采用C++编写。',
+            'scenario': '游戏玩家希望在不同操作系统上体验PS4游戏，但缺乏兼容的平台，导致无法享受游戏乐趣。',
+            'solution': '提供高效的PS4游戏模拟，让玩家能够在多种操作系统上运行和体验PS4游戏。'
+        },
+        'langchain-ai/open-swe': {
+            'overview': 'open-swe 是一个开源的异步编码助手，旨在提高编程效率。',
+            'scenario': '开发者在编写代码时常遇到效率低下和重复劳动的问题，尤其在处理异步任务时更为明显。',
+            'solution': '该项目提供了异步编程的智能支持，简化了代码编写过程，并自动处理复杂的异步逻辑。'
+        },
+        'codecrafters-io/build-your-own-x': {
+            'overview': '通过从零开始重建您最喜欢的技术，掌握编程技能。',
+            'scenario': '许多开发者希望深入理解技术原理，但缺乏实践机会。通过重建经典项目，他们能够提高编程能力，解决技术盲区。',
+            'solution': '提供一系列项目指南，用户可以逐步实现各种技术，涵盖编程语言、框架和工具的核心概念。'
+        },
+        'langchain-ai/deepagents': {
+            'overview': '深度智能体框架，基于LangChain和LangGraph构建。',
+            'scenario': '用户需要处理复杂的任务时，常常面临子任务管理和资源调配的挑战。此项目旨在提供一种高效的方式来组织和执行这些任务。',
+            'solution': '提供规划工具、文件系统后端和生成子智能体的能力，支持复杂的智能任务处理。'
+        },
+        'jarrodwatts/claude-hud': {
+            'overview': 'Claude Code 插件，用于显示上下文使用情况、活动工具、运行代理和待办进度。',
+            'scenario': '开发人员在使用 Claude Code 时，需要实时了解当前上下文、工具和进度，以便更高效地完成任务，但往往难以获得这些信息。',
+            'solution': '该插件通过可视化界面提供实时信息，帮助用户快速掌握工作状态和进度，提升工作效率。'
+        },
+        'cloudflare/workerd': {
+            'overview': 'workerd 是一个支持 JavaScript 和 WebAssembly 的运行时，驱动着 Cloudflare Workers。 ',
+            'scenario': '开发者需要在边缘计算平台上快速部署无服务器应用，但常常面临性能和兼容性问题。使用 workerd，可以轻松创建高效的应用，解决延迟和资源限制的挑战。',
+            'solution': 'workerd 提供高性能的 JavaScript 和 WebAssembly 运行时，支持轻松的 API 集成，优化了边缘计算的执行效率。'
+        },
         '666ghj/MiroFish': {
             'overview': 'MiroFish 是一个简洁通用的群体智能引擎，能够进行各类预测。',
             'scenario': '用户可以在数据分析、市场预测等领域应用 MiroFish，提升决策准确性和效率，解决传统模型灵活性不足的问题。',
