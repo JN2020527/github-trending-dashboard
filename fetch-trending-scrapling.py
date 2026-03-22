@@ -259,6 +259,71 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'FujiwaraChoki/MoneyPrinterV2': {
+            'overview': 'MoneyPrinterV2 是一个用于自动化在线赚钱过程的 Python 项目。',
+            'scenario': '许多用户希望通过互联网获得被动收入，但缺乏有效的工具和策略，导致他们难以实现这一目标。',
+            'solution': '该项目提供自动化工具，简化了在线赚钱的步骤，帮助用户更高效地获取收益。'
+        },
+        'systemd/systemd': {
+            'overview': 'systemd 是一个系统和服务管理器，用于Linux操作系统。',
+            'scenario': '在Linux系统中，用户常常需要管理服务和启动项，手动配置繁琐且容易出错，影响系统性能和稳定性。',
+            'solution': 'systemd 提供统一的服务管理框架，支持并行启动、依赖管理和日志记录，提高系统启动速度和管理效率。'
+        },
+        'aquasecurity/trivy': {
+            'overview': 'Trivy 是一个开源的安全扫描工具，能够检测容器、Kubernetes、代码仓库和云环境中的漏洞和配置错误。',
+            'scenario': '开发者在构建和部署应用时，常面临安全漏洞和配置错误的风险，Trivy 可以帮助他们快速识别和修复这些问题。',
+            'solution': 'Trivy 提供全面的漏洞检测、错误配置检查、密钥泄露识别和软件物料清单生成，提升应用安全性。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款自给自足的离线生存计算机，内置关键工具和知识。',
+            'scenario': '在偏远地区或紧急情况下，用户需要随时获取生存知识和工具，传统设备可能无法使用或连接网络。',
+            'solution': '该项目提供离线访问的生存指南、实用工具和AI助手，确保用户在任何环境下都能获得支持。'
+        },
+        'opendataloader-project/opendataloader-pdf': {
+            'overview': 'opendataloader-pdf 是一个开源的 PDF 解析器，专为 AI 数据准备而设计。',
+            'scenario': '用户在处理大量 PDF 文件时常面临数据提取困难，且缺乏无障碍功能，影响了信息的获取和利用。',
+            'solution': '该项目通过自动化 PDF 可访问性，提供高效的数据提取功能，简化用户工作流程。'
+        },
+        'jarrodwatts/claude-hud': {
+            'overview': 'Claude Code 插件，提供实时上下文使用、活跃工具、运行代理及待办进度的可视化信息。',
+            'scenario': '开发者在使用 Claude 进行编程时，常常需要清晰地了解当前环境和工具的使用情况，然而缺乏有效的可视化反馈，影响工作效率。',
+            'solution': '通过该插件，用户可以实时查看上下文信息、活跃工具和待办事项的进度，提升工作透明度和效率。'
+        },
+        'protocolbuffers/protobuf': {
+            'overview': 'Protocol Buffers是Google开发的数据交换格式，用于高效序列化结构化数据。',
+            'scenario': '在分布式系统、微服务架构中，数据传输效率和兼容性是关键痛点。传统的JSON或XML在性能和存储上存在不足。',
+            'solution': '通过高效的二进制序列化，Protocol Buffers提供了更小的消息体积和更快的解析速度，同时支持多种编程语言的跨平台使用。'
+        },
+        'vllm-project/vllm-omni': {
+            'overview': 'vllm-omni 是一个高效的多模态模型推理框架，基于 Python 开发。',
+            'scenario': '在自然语言处理、计算机视觉等领域，用户需要处理不同模态的数据，现有工具往往效率低下，无法满足实时推理需求。',
+            'solution': 'vllm-omni 提供了优化的推理算法和灵活的接口，支持多种模态的高效组合与推理，提升了处理速度和准确性。'
+        },
+        'FujiwaraChoki/MoneyPrinterV2': {
+            'overview': 'MoneyPrinterV2 是一个自动化在线赚钱的工具，基于 Python 开发。',
+            'scenario': '用户希望通过网络赚取额外收入，但缺乏有效的方法和工具，常常面临时间和效率的挑战。',
+            'solution': '该项目提供了一套自动化流程，简化了在线赚钱的步骤，帮助用户更高效地实现收益。'
+        },
+        'systemd/systemd': {
+            'overview': 'systemd 是一个系统和服务管理器，广泛用于 Linux 操作系统。',
+            'scenario': '在现代 Linux 系统中，用户需要高效地管理服务和系统进程。传统的启动方式往往复杂且效率低下，导致系统启动时间长，服务管理困难。',
+            'solution': 'systemd 提供并行启动服务、依赖管理和统一的日志系统，显著提升了系统启动速度和服务管理的便利性。'
+        },
+        'aquasecurity/trivy': {
+            'overview': 'Trivy 是一个开源工具，用于扫描容器、Kubernetes、代码库和云环境中的漏洞、错误配置和机密信息。',
+            'scenario': '开发者和运维人员在持续集成/持续部署中需要确保应用安全，防止漏洞和配置错误带来的安全风险。',
+            'solution': 'Trivy 提供全面的安全扫描功能，能够检测容器和代码中的漏洞、配置错误，以及敏感信息，帮助用户快速识别并修复安全隐患。'
+        },
+        'protocolbuffers/protobuf': {
+            'overview': 'Protocol Buffers是谷歌开发的一种高效数据交换格式。',
+            'scenario': '在分布式系统中，数据传输效率至关重要。开发者常面临数据格式不统一、序列化/反序列化慢等问题。',
+            'solution': 'Protocol Buffers提供一种语言中立、平台无关的序列化机制，支持高效的数据编码和解码，减少了数据传输的大小和时间。'
+        },
+        'vllm-project/vllm-omni': {
+            'overview': 'vllm-omni是一个用于高效推理的框架，支持多种模态模型。',
+            'scenario': '该项目适用于需要处理图像、文本等多种数据类型的应用场景，如自然语言处理、计算机视觉等。用户在进行多模态推理时，常面临性能瓶颈和资源浪费的问题。',
+            'solution': 'vllm-omni通过优化模型推理流程，提升计算效率，支持多模态数据整合，帮助用户高效利用资源。'
+        },
         'opendataloader-project/opendataloader-pdf': {
             'overview': 'opendataloader-pdf是一个用于处理PDF文件的开源项目，旨在为AI提供可用数据。',
             'scenario': '用户在处理大量PDF文档时常面临数据提取困难，影响信息获取和分析效率。',
