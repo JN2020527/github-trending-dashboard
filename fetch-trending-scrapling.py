@@ -259,6 +259,26 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'TauricResearch/TradingAgents': {
+            'overview': 'TradingAgents是一个基于多智能体的金融交易框架，利用大语言模型进行交易决策。',
+            'scenario': '在金融市场中，交易者面临复杂的决策环境和信息过载，传统方法难以快速反应和优化策略。用户需要高效、智能的交易工具来提升交易效果。',
+            'solution': '该框架结合多智能体系统和大语言模型，实现自主交易策略生成、实时市场分析及风险管理，帮助用户优化交易决策。'
+        },
+        'vxcontrol/pentagi': {
+            'overview': '一个完全自主的人工智能代理系统，能够执行复杂的渗透测试任务。',
+            'scenario': '安全团队需要高效地评估系统安全性，传统测试方法耗时且人力成本高，难以快速发现漏洞。',
+            'solution': '通过自动化AI代理，快速执行渗透测试，提供详细报告，提升安全测试的效率和准确性。'
+        },
+        'jamwithai/production-agentic-rag-course': {
+            'overview': '这是一个基于Python的生产代理课程，旨在提升人工智能系统的能力。',
+            'scenario': '用户在构建智能系统时，面临数据整合和知识检索的挑战，导致效率低下和决策困难。',
+            'solution': '该项目提供了一套完整的课程，涵盖数据处理、模型训练及智能检索技术，帮助用户高效构建AI系统。'
+        },
+        'affaan-m/everything-claude-code': {
+            'overview': '一个优化性能的智能代理系统，支持Claude Code等编程助手。',
+            'scenario': '开发者在使用智能编程工具时，常面临性能瓶颈和安全隐患，影响开发效率和代码质量。',
+            'solution': '通过技能、直觉、记忆和安全机制，提升Claude Code等工具的开发体验和性能。'
+        },
         'FujiwaraChoki/MoneyPrinterV2': {
             'overview': 'MoneyPrinterV2 是一个用于自动化在线赚钱过程的 Python 项目。',
             'scenario': '许多用户希望通过互联网获得被动收入，但缺乏有效的工具和策略，导致他们难以实现这一目标。',
