@@ -259,6 +259,61 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'FujiwaraChoki/MoneyPrinterV2': {
+            'overview': 'MoneyPrinterV2是一个基于Python的自动化在线赚钱工具。',
+            'scenario': '许多用户希望通过网络赚取收入，但缺乏有效的工具和方法，导致时间和精力的浪费。',
+            'solution': '该项目提供了一系列自动化脚本，帮助用户高效地进行在线赚钱，简化流程，提升收益。'
+        },
+        'bytedance/deer-flow': {
+            'overview': 'Deer-Flow是一个开源的超级代理工具，旨在研究、编码和创建。',
+            'scenario': '用户在处理复杂任务时，可能面临时间紧迫、流程繁琐的问题。Deer-Flow通过沙箱和子代理等功能，帮助用户高效完成任务。',
+            'solution': '它通过沙箱、记忆、工具和消息网关，支持多层次任务处理，极大提高工作效率。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款自给自足的离线生存计算机，集成了关键工具、知识和人工智能。',
+            'scenario': '在偏远地区或灾后环境中，用户可能缺乏通信和信息获取手段，面临生存挑战和决策困难。',
+            'solution': '该项目提供离线信息、实用工具和AI助手，支持用户随时随地获取生存知识和技能。'
+        },
+        'vxcontrol/pentagi': {
+            'overview': 'pentagi是一个完全自主的人工智能代理系统，专用于执行复杂的渗透测试任务。',
+            'scenario': '在网络安全领域，安全专家需要高效识别系统漏洞，传统手动测试耗时且容易遗漏。pentagi帮助他们自动化这一过程，提升效率与准确性。',
+            'solution': '该系统利用AI技术，自动执行渗透测试，提供详细报告，快速识别安全漏洞，节省人力成本。'
+        },
+        'browser-use/browser-use': {
+            'overview': '一个帮助AI代理访问和操作网站的工具，简化在线任务自动化。',
+            'scenario': '在进行数据采集或测试时，开发者常常需要手动操作网站，耗时且繁琐。此项目旨在解决这一痛点，提升工作效率。',
+            'solution': '通过提供简单的API和自动化脚本，使得AI代理能够轻松访问和操作各种网站，实现高效的在线任务自动化。'
+        },
+        'TauricResearch/TradingAgents': {
+            'overview': 'TradingAgents是一个基于多智能体的金融交易框架，结合了大型语言模型技术。',
+            'scenario': '用户可以利用该框架在金融市场中实现自动化交易，解决人工交易效率低、情绪影响决策等问题。',
+            'solution': '框架支持多智能体协作，集成LLM进行市场分析和策略生成，提升交易决策的智能化与自动化水平。'
+        },
+        'tinygrad/tinygrad': {
+            'overview': 'tinygrad 是一个轻量级的深度学习框架，灵感来自 PyTorch 和 micrograd。',
+            'scenario': '适合需要快速原型开发和学习深度学习基本原理的开发者，尤其是对大型框架感到繁重的用户。',
+            'solution': '提供简洁的 API 和基础的自动微分功能，轻松实现和训练神经网络。'
+        },
+        'affaan-m/everything-claude-code': {
+            'overview': '一个优化代理性能的系统，支持Claude Code、Codex等工具。',
+            'scenario': '开发者在使用Claude Code等工具时，常面临性能瓶颈和资源管理问题，影响开发效率和体验。',
+            'solution': '通过技能、直觉、记忆和安全机制，提供高效的性能优化和研究驱动的开发支持。'
+        },
+        'bytedance/deer-flow': {
+            'overview': 'Deer-Flow是一个开源的超级代理工具，支持研究、编码和创作。',
+            'scenario': '用户需要处理复杂任务时，常常面临时间紧迫和资源不足的问题，特别是在多任务环境中容易导致效率低下。',
+            'solution': '通过沙箱、记忆、工具和子代理等功能，Deer-Flow能够高效管理不同级别的任务，缩短处理时间。'
+        },
+        'browser-use/browser-use': {
+            'overview': '一个帮助AI代理访问网站的工具，简化在线任务自动化。',
+            'scenario': '开发者希望利用AI自动化处理网页信息，但面对复杂的网站结构和交互，效率低下，难以实现高效的数据获取和任务执行。',
+            'solution': '通过Python库，提供简便的接口，使AI代理能够轻松访问和操作各种网站，提升自动化任务的效率。'
+        },
+        'tinygrad/tinygrad': {
+            'overview': 'tinygrad 是一个轻量级的深度学习框架，灵感来源于 PyTorch 和 Micrograd。',
+            'scenario': '对于希望快速实现深度学习模型的开发者，传统框架可能过于复杂，学习曲线陡峭，tinygrad 提供了简洁的接口和易用性。',
+            'solution': 'tinygrad 通过简化深度学习的基本构建块，支持自动微分和基本神经网络结构，帮助用户快速构建和训练模型。'
+        },
         'TauricResearch/TradingAgents': {
             'overview': 'TradingAgents是一个基于多智能体的金融交易框架，利用大语言模型进行交易决策。',
             'scenario': '在金融市场中，交易者面临复杂的决策环境和信息过载，传统方法难以快速反应和优化策略。用户需要高效、智能的交易工具来提升交易效果。',
