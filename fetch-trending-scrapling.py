@@ -259,6 +259,66 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'pascalorg/editor': {
+            'overview': '这是一个基于 TypeScript 的编辑器项目，旨在提供高效的代码编辑体验。',
+            'scenario': '开发者需要一个功能强大且易于使用的编辑器，以提高编码效率和完成项目。传统编辑器可能缺乏个性化和智能提示，影响工作流。',
+            'solution': '该编辑器支持丰富的插件扩展、智能代码补全和实时预览，帮助开发者提升生产力。'
+        },
+        'bytedance/deer-flow': {
+            'overview': 'Deer-Flow是一个开源的超级代理框架，支持研究、编码和创作。',
+            'scenario': '用户可在不同任务场景中使用Deer-Flow，尤其是需要处理复杂任务时，如数据分析和自动化脚本，节省大量时间和精力。',
+            'solution': '项目通过沙箱、记忆、工具、技能、子代理和消息网关，处理从几分钟到几小时的多层次任务。'
+        },
+        'supermemoryai/supermemory': {
+            'overview': '超高速、可扩展的记忆引擎与应用，专为AI时代设计的记忆API。',
+            'scenario': '在处理大规模数据时，用户常面临存取速度慢、扩展性不足的问题，影响AI应用的性能与效率。',
+            'solution': '提供高效的记忆引擎，支持快速数据存取和横向扩展，满足AI应用的需求。'
+        },
+        'FujiwaraChoki/MoneyPrinterV2': {
+            'overview': 'MoneyPrinterV2 是一个自动化线上赚钱的工具，帮助用户轻松获取收入。',
+            'scenario': '许多用户在寻找线上赚钱的机会，但常常面临时间和技术能力不足的问题。该项目旨在简化这一过程，让每个人都能参与进来。',
+            'solution': '通过自动化脚本和高效算法，MoneyPrinterV2 能够快速生成收入，降低用户的操作难度。'
+        },
+        'harry0703/MoneyPrinterTurbo': {
+            'overview': 'MoneyPrinterTurbo 是一个基于 AI 大模型的一键高清短视频生成工具。',
+            'scenario': '用户需要快速制作短视频用于社交媒体或广告，但缺乏视频编辑技能，传统工具复杂且耗时。',
+            'solution': '通过简单操作，利用 AI 自动生成高质量短视频，节省时间并降低制作门槛。'
+        },
+        'Crosstalk-Solutions/project-nomad': {
+            'overview': 'Project N.O.M.A.D 是一款自给自足的离线生存计算机，集成了重要工具、知识和人工智能。',
+            'scenario': '用户在偏远地区或灾后环境中可能无法获取信息，面临生存挑战，急需可靠的工具和知识以应对突发情况。',
+            'solution': '提供离线访问的生存工具、知识库和AI助手，确保用户随时随地获得所需支持。'
+        },
+        'TauricResearch/TradingAgents': {
+            'overview': 'TradingAgents是一个多智能体金融交易框架，基于大语言模型实现。',
+            'scenario': '在金融市场中，交易者面临信息不对称和决策复杂性的问题。本项目为交易者提供了一个智能化的交易助手，提高交易效率和决策准确性。',
+            'solution': '通过多智能体协作和大语言模型，项目实现了自动化交易策略生成、实时市场分析和风险管理功能。'
+        },
+        'mvanhorn/last30days-skill': {
+            'overview': '一个AI代理技能，能够在Reddit、X、YouTube、HN、Polymarket及网络上研究任何主题，并汇总出有根据的总结。',
+            'scenario': '用户在寻找特定主题的信息时，常常面临信息碎片化和可靠性不足的问题，难以获取全面的见解。',
+            'solution': '通过整合多个平台的数据，项目提供精准的主题研究和汇总，帮助用户快速了解相关信息。'
+        },
+        'pascalorg/editor': {
+            'overview': '这是一个基于 TypeScript 的在线代码编辑器，提供多种编程语言支持。',
+            'scenario': '开发者常常需要一个功能强大的在线编辑器来快速编写和测试代码，但现有工具往往不够灵活或功能有限。',
+            'solution': '该编辑器提供实时预览、代码高亮、自动补全等核心功能，提升编码效率和体验。'
+        },
+        'supermemoryai/supermemory': {
+            'overview': 'supermemory 是一个快速可扩展的记忆引擎和应用，专为 AI 时代设计的 Memory API。',
+            'scenario': '用户在处理大量数据时，常遇到记忆管理效率低下的问题，影响 AI 应用的性能和响应速度。',
+            'solution': '提供高效的记忆存储和检索功能，支持大规模数据处理，优化 AI 任务的执行效率。'
+        },
+        'harry0703/MoneyPrinterTurbo': {
+            'overview': 'MoneyPrinterTurbo 是一个基于 AI 大模型的短视频生成工具，用户可一键生成高清短视频。',
+            'scenario': '在社交媒体和内容创作日益增长的背景下，用户常面临视频制作时间长、难度大的问题，急需快速生成吸引眼球的短视频。',
+            'solution': '该项目利用先进的 AI 技术，实现一键生成短视频，简化了创作流程，提高了视频制作效率。'
+        },
+        'mvanhorn/last30days-skill': {
+            'overview': '一个AI代理技能，通过多平台研究主题并生成总结。',
+            'scenario': '用户希望快速获取某个话题的全面信息，但各个平台信息繁杂且分散，难以整合和理解。',
+            'solution': '该项目整合Reddit、YouTube等平台的信息，提供基于事实的主题总结，帮助用户高效获取知识。'
+        },
         'FujiwaraChoki/MoneyPrinterV2': {
             'overview': 'MoneyPrinterV2是一个基于Python的自动化在线赚钱工具。',
             'scenario': '许多用户希望通过网络赚取收入，但缺乏有效的工具和方法，导致时间和精力的浪费。',
