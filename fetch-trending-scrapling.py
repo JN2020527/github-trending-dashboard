@@ -260,6 +260,61 @@ def get_descriptions():
     """项目描述数据库"""
     return {
         'luongnv89/claude-howto': {
+            'overview': '这是一个视觉化的示例指南，专注于Claude Code的从基础到高级的应用。',
+            'scenario': '开发者在学习Claude Code时常常面临概念抽象和缺乏实践示例的问题，导致上手困难。',
+            'solution': '提供易于理解的示例和可直接使用的模板，帮助用户快速掌握Claude Code的应用。'
+        },
+        'microsoft/VibeVoice': {
+            'overview': 'VibeVoice是一个开源的语音AI项目，旨在提升人机交互体验。',
+            'scenario': '用户在使用语音助手时，常遇到识别不准确或交互不流畅的问题。VibeVoice可在多种应用场景中提升语音识别的准确性和自然交互。',
+            'solution': '通过先进的语音识别技术和自然语言处理，VibeVoice实现高效的语音理解与响应，提供流畅的用户体验。'
+        },
+        'Yeachan-Heo/oh-my-claudecode': {
+            'overview': 'Yeachan-Heo的oh-my-claudecode是一个以团队为中心的多智能体编排工具，专为Claude Code设计。',
+            'scenario': '团队在协作开发中常遇到任务分配不均、沟通不畅等问题，导致效率低下和项目进度延误。',
+            'solution': '该项目通过多智能体协作，优化任务分配与执行，实现高效的团队协作与项目管理。'
+        },
+        'shanraisshan/claude-code-best-practice': {
+            'overview': '这是一个针对Claude编程的最佳实践示例库，帮助开发者提高代码质量。',
+            'scenario': '开发者在使用Claude进行编程时，常常面临代码可读性差和维护困难的问题。该项目提供了实用的示例和最佳实践，帮助用户更好地编写代码。',
+            'solution': '项目包含丰富的HTML代码示例和最佳实践指南，旨在提升代码的可读性和可维护性。'
+        },
+        'NousResearch/hermes-agent': {
+            'overview': 'Hermes Agent 是一个与用户共同成长的智能代理，基于 Python 开发。',
+            'scenario': '用户在日常工作中需要一个智能助手来自动化任务、提供建议和提高效率，但现有工具无法适应个人需求的变化。',
+            'solution': 'Hermes Agent 通过机器学习算法不断优化自身功能，支持个性化定制和任务自动化，提升用户工作效率。'
+        },
+        'obra/superpowers': {
+            'overview': 'superpowers 是一个代理技能框架与软件开发方法论，旨在提升开发效率与协作效果。',
+            'scenario': '在软件开发中，团队常面临技能不均、沟通不畅的问题，导致项目进度缓慢和质量下降。开发者需要一种有效的方法来提升自身技能与团队协作。',
+            'solution': '通过提供一套系统化的技能框架和开发流程，superpowers 帮助团队更好地识别和应用各自的优势，提高项目执行力。'
+        },
+        'microsoft/agent-lightning': {
+            'overview': '一个高效的训练框架，旨在为AI代理提供支持。',
+            'scenario': '开发者在构建AI代理时，常面临训练效率低和资源消耗大的问题，影响项目进度和效果。',
+            'solution': '该项目通过优化训练流程和资源管理，提升AI代理的训练效率，降低开发成本。'
+        },
+        'PaddlePaddle/PaddleOCR': {
+            'overview': 'PaddleOCR 是一个强大的轻量级OCR工具包，可将PDF或图像文档转换为结构化数据。',
+            'scenario': '用户需要从大量图像或PDF文档中提取文本信息，传统方法效率低且准确性差，影响数据处理。',
+            'solution': 'PaddleOCR支持100多种语言，提供高效的OCR识别，简化文档数据提取流程，助力AI应用。'
+        },
+        'Yeachan-Heo/oh-my-claudecode': {
+            'overview': 'Yeachan-Heo的oh-my-claudecode是一个以团队为中心的多智能体编排工具，专为Claude Code设计。',
+            'scenario': '在团队协作中，开发者需要高效地管理多个智能体任务，以提高工作效率和协同效果。当前的工具往往无法满足多任务处理的需求，导致沟通不畅和效率低下。',
+            'solution': '该项目提供了多智能体的自动编排功能，支持团队协作，优化任务管理，提升开发效率。'
+        },
+        'microsoft/agent-lightning': {
+            'overview': 'Agent-Lightning 是一个用于快速训练 AI 代理的工具，旨在提升开发效率。',
+            'scenario': '开发者在构建 AI 代理时常面临训练时间长、配置复杂的问题，导致项目进度缓慢。Agent-Lightning 提供简化的训练流程，帮助开发者高效完成任务。',
+            'solution': '该项目利用 Python 构建，提供易于使用的接口和高性能训练框架，支持快速迭代和优化。'
+        },
+        'PaddlePaddle/PaddleOCR': {
+            'overview': 'PaddleOCR 是一个强大的轻量级 OCR 工具包，将PDF或图像文档转化为结构化数据。',
+            'scenario': '用户在处理大量文档时，常面临数据提取困难的问题，尤其是多语言文本的识别和转换。PaddleOCR 能有效解决这些痛点。',
+            'solution': '支持100+种语言，利用先进的OCR技术，将图像和PDF内容快速转化为可处理的数据，助力AI应用。'
+        },
+        'luongnv89/claude-howto': {
             'overview': '这是一个关于Claude代码的视觉化示例驱动指南，涵盖从基础概念到高级代理的内容。',
             'scenario': '用户在学习Claude代码时，常面临概念难以理解和缺乏实践示例的问题，导致学习效率低下。',
             'solution': '提供易于理解的示例和可复制的模板，帮助用户快速上手和应用Claude代码。'
