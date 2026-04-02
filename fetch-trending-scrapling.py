@@ -259,6 +259,66 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'anthropics/claude-code': {
+            'overview': 'Claude Code 是一款运行在终端中的智能编码工具，能理解代码库并加速编码过程。',
+            'scenario': '开发者常常在重复性任务和复杂代码理解上耗费大量时间，难以专注于核心开发。Claude Code 可以通过自然语言命令简化这些流程。',
+            'solution': '该工具执行常规任务、解释复杂代码并处理 git 工作流，提升开发效率。'
+        },
+        'microsoft/VibeVoice': {
+            'overview': 'VibeVoice是一个开源的前沿语音人工智能项目，旨在提升语音交互体验。',
+            'scenario': '用户在日常生活中需要更自然的语音助手，现有语音助手常常无法理解复杂指令或上下文，导致用户体验不佳。',
+            'solution': 'VibeVoice通过先进的自然语言处理和深度学习技术，实现更智能的语音理解和响应，提供流畅的交互体验。'
+        },
+        'google-research/timesfm': {
+            'overview': 'TimesFM 是由 Google Research 开发的预训练时间序列基础模型，专用于时间序列预测。',
+            'scenario': '在金融、气象等领域，用户需要准确预测未来数据，但传统模型往往难以捕捉复杂的时间序列模式，导致预测不准。',
+            'solution': 'TimesFM 提供先进的时间序列建模能力，利用深度学习技术提升预测精度，适用于多种时间序列数据的分析与预测。'
+        },
+        'luongnv89/claude-howto': {
+            'overview': '这是一本关于Claude Code的可视化示例指南，涵盖从基础概念到高级代理的内容。',
+            'scenario': '开发者在学习Claude Code时，常常缺乏系统的示例和模板，导致理解困难，难以迅速应用。',
+            'solution': '提供了易于复制的模板和实例，帮助用户快速掌握Claude Code的使用，提升开发效率。'
+        },
+        'axios/axios': {
+            'overview': 'axios 是一个基于 Promise 的 HTTP 客户端，支持浏览器和 Node.js。',
+            'scenario': '在开发 web 应用时，开发者需要发送 HTTP 请求以获取数据，传统的 XMLHttpRequest 使用繁琐，且错误处理不方便，影响开发效率。',
+            'solution': 'axios 提供简单易用的 API，支持请求和响应拦截、自动转换 JSON 数据、取消请求和超时设置等功能，极大提升了 HTTP 请求的开发体验。'
+        },
+        'openai/codex': {
+            'overview': '一个轻量级的编码助手，可以在终端中运行，帮助开发者提高效率。',
+            'scenario': '开发者在编写代码时常常需要查阅文档或示例，导致效率降低。此工具能够实时提供代码建议，解决了查找信息的痛点。',
+            'solution': '通过Rust语言编写，codex 提供智能代码补全和实时示例，提升编程效率，简化开发流程。'
+        },
+        'f/prompts.chat': {
+            'overview': 'f/prompts.chat 是一个开源平台，让用户分享、发现和收藏 ChatGPT 提示。',
+            'scenario': '用户在使用 ChatGPT 时常常需要灵感，寻找合适的提示来提高交流效率。社区共享的提示可以帮助用户解决这一痛点。',
+            'solution': '提供社区驱动的提示库，用户可以轻松分享和收集提示，同时支持自托管以保障隐私。'
+        },
+        'anthropics/claude-code': {
+            'overview': 'Claude Code 是一款终端中的智能编码工具，帮助开发者提高编码效率。',
+            'scenario': '开发者在编写代码时常常面临重复性任务、复杂代码的理解难题和 Git 工作流的管理痛点，影响工作效率。',
+            'solution': 'Claude Code 通过自然语言命令执行常规任务、解释复杂代码并管理 Git 工作流，助力快速编码。'
+        },
+        'google-research/timesfm': {
+            'overview': 'TimesFM是由Google Research开发的预训练时间序列基础模型，旨在进行时间序列预测。',
+            'scenario': '在金融、气象等领域，企业面临准确预测未来趋势的挑战，传统方法往往难以捕捉复杂的时间序列模式。',
+            'solution': 'TimesFM利用深度学习技术，提供高效的时间序列建模，支持多种预测任务，提升预测准确性和效率。'
+        },
+        'axios/axios': {
+            'overview': 'Axios是一个基于Promise的HTTP客户端，适用于浏览器和Node.js。',
+            'scenario': '在开发Web应用时，开发者常常需要与服务器进行数据交互，处理请求和响应。传统的XHR请求较为繁琐，容易出错。',
+            'solution': 'Axios简化了HTTP请求，支持Promise，提供简洁的API，易于处理响应数据，并自动转换JSON格式。'
+        },
+        'openai/codex': {
+            'overview': 'Codex是一个轻量级的编码助手，能够在终端中运行。',
+            'scenario': '开发者在编码时常常需要查找文档和示例，手动搜索耗时且效率低下。Codex可以实时提供代码建议，提升开发效率。',
+            'solution': 'Codex通过自然语言处理技术，理解用户意图并生成相应的代码片段，支持多种编程语言，简化了编码过程。'
+        },
+        'f/prompts.chat': {
+            'overview': '一个开源平台，分享、发现和收集社区的 ChatGPT 提示语。',
+            'scenario': '用户希望获取高质量的 ChatGPT 提示语以提升聊天效果，但缺乏一个集中获取和分享的渠道，导致信息分散。',
+            'solution': '提供社区共享、发现和收藏提示语的功能，支持自我托管，确保隐私与数据安全。'
+        },
         'luongnv89/claude-howto': {
             'overview': '这是一个视觉化的示例指南，专注于Claude Code的从基础到高级的应用。',
             'scenario': '开发者在学习Claude Code时常常面临概念抽象和缺乏实践示例的问题，导致上手困难。',
