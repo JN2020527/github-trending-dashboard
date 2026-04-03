@@ -259,6 +259,26 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'siddharthvaddem/openscreen': {
+            'overview': '开源项目 openscreen 提供免费、无水印的精彩演示创建工具，适用于商业用途。',
+            'scenario': '用户需要制作高质量演示，但常常面临收费软件的订阅和水印问题，这限制了他们的创作自由。',
+            'solution': 'openscreen 提供无水印的演示创建功能，完全免费且开源，支持商业使用，为用户提供灵活的创作选择。'
+        },
+        'Yeachan-Heo/oh-my-codex': {
+            'overview': 'OmX - Oh My codeX 是一个开源的工具，旨在增强代码管理和协作体验。',
+            'scenario': '开发者在项目中常常需要与团队协作，面对代码混乱、版本控制困难等问题，影响工作效率与代码质量。',
+            'solution': '通过添加钩子、代理团队、HUD等功能，OmX 提供了灵活的代码管理和协作解决方案，提升开发效率。'
+        },
+        'asgeirtj/system_prompts_leaks': {
+            'overview': '该项目提取了多个AI系统的提示信息，包括ChatGPT、Claude、Gemini等，定期更新。',
+            'scenario': '用户需要了解不同AI系统的提示内容以优化应用或进行研究，但获取这些信息较为困难，且更新不及时。',
+            'solution': '本项目提供了各大AI系统的系统提示提取，用户可以方便地获取和使用这些信息，支持多种AI模型。'
+        },
+        'sherlock-project/sherlock': {
+            'overview': 'Sherlock 是一个用于根据用户名在社交网络上查找账户的开源工具。',
+            'scenario': '用户希望找到某个用户名在多个社交平台上的账户，但手动搜索耗时且效率低下，容易遗漏。',
+            'solution': 'Sherlock 通过输入用户名自动查询多个社交网络，快速汇总结果，节省时间并提高准确性。'
+        },
         'anthropics/claude-code': {
             'overview': 'Claude Code 是一款运行在终端中的智能编码工具，能理解代码库并加速编码过程。',
             'scenario': '开发者常常在重复性任务和复杂代码理解上耗费大量时间，难以专注于核心开发。Claude Code 可以通过自然语言命令简化这些流程。',
