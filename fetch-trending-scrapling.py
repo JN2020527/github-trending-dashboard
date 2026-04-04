@@ -259,6 +259,46 @@ def fetch_github_trending():
 def get_descriptions():
     """项目描述数据库"""
     return {
+        'Blaizzy/mlx-vlm': {
+            'overview': 'MLX-VLM 是一个用于在 Mac 上进行视觉语言模型推理和微调的 Python 包。',
+            'scenario': '用户希望在 Mac 上高效地使用视觉语言模型进行图片与文本的理解与生成，但缺乏合适的工具和支持。',
+            'solution': '提供简单易用的接口，支持视觉语言模型的推理与微调，帮助用户快速实现图文任务。'
+        },
+        'onyx-dot-app/onyx': {
+            'overview': 'Onyx是一个开源的AI平台，支持与各种大型语言模型（LLM）进行智能对话。',
+            'scenario': '用户在寻找高效的对话AI工具时，常常面临功能不足或不兼容的问题，导致无法充分利用LLM的能力。',
+            'solution': 'Onyx提供先进的对话功能，兼容多种LLM，助力用户实现智能对话和更深层次的交互。'
+        },
+        'Yeachan-Heo/oh-my-codex': {
+            'overview': 'OmX是一个开源工具，可以为代码库添加钩子、代理团队和HUD等功能，提升开发效率。',
+            'scenario': '开发者在管理代码库时常常需要定制化的功能和工具，来满足团队的特定需求。OmX提供了灵活的扩展能力，帮助开发者解决这一痛点。',
+            'solution': '通过添加钩子、管理代理团队和提供HUD，OmX为开发者提供了强大的定制化和协作工具。'
+        },
+        'siddharthvaddem/openscreen': {
+            'overview': 'OpenScreen 是一个开源项目，旨在免费创建精美演示，无需订阅和水印，支持商业使用。',
+            'scenario': '用户需要制作高质量的演示，但现有工具往往收费高、带水印或限制使用，影响创作自由。',
+            'solution': '提供无水印、高自由度的演示创建工具，完全开源，适合各种商业和个人用途。'
+        },
+        'telegramdesktop/tdesktop': {
+            'overview': 'Telegram Desktop 是一款基于 Telegram 的桌面消息应用，支持多平台使用。',
+            'scenario': '用户在工作或学习时希望通过桌面应用方便地发送和接收消息，但手机操作不够便捷，切换应用影响效率。',
+            'solution': '提供实时消息同步、群组聊天、文件共享和多平台支持，提升用户沟通效率。'
+        },
+        'block/goose': {
+            'overview': '一个开源、可扩展的 AI 代理，超越代码建议，支持安装、执行、编辑和测试任意 LLM。',
+            'scenario': '开发者在编写代码时常常需要实时获取建议和测试功能，这个过程繁琐且耗时。用户希望能够更高效地与 AI 进行互动，提升开发效率。',
+            'solution': '提供完整的 AI 代理功能，支持代码的安装、执行、编辑和测试，简化开发流程。'
+        },
+        'microsoft/agent-framework': {
+            'overview': '一个用于构建、协调和部署AI代理及多代理工作流的框架，支持Python和.NET。',
+            'scenario': '用户需要管理多个AI代理进行复杂任务时，常面临协调和部署的挑战，导致效率低下和资源浪费。',
+            'solution': '提供简洁的API和工具，支持快速构建代理、灵活的工作流管理以及高效的部署方案，提升开发效率。'
+        },
+        'sherlock-project/sherlock': {
+            'overview': 'Sherlock 是一个用于通过用户名在社交网络上查找社交媒体账户的工具。',
+            'scenario': '用户希望通过一个用户名找到可能存在的社交媒体账户，但面对众多平台的分散信息，难以高效查找。这时，Sherlock 提供了一种便捷的解决方案。',
+            'solution': '该项目支持多种社交媒体平台的账户查找，用户只需输入用户名即可快速获取相关账户信息。'
+        },
         'siddharthvaddem/openscreen': {
             'overview': '开源项目 openscreen 提供免费、无水印的精彩演示创建工具，适用于商业用途。',
             'scenario': '用户需要制作高质量演示，但常常面临收费软件的订阅和水印问题，这限制了他们的创作自由。',
