@@ -8,7 +8,7 @@
       "url": "https://github.com/Blaizzy/mlx-vlm",
       "description": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX.",
       "language": "Python",
-      "total_stars": "3,442",
+      "total_stars": "3,444",
       "stars_today": "316"
     },
     {
@@ -18,7 +18,7 @@
       "url": "https://github.com/onyx-dot-app/onyx",
       "description": "Open Source AI Platform - AI Chat with advanced features that works with every LLM",
       "language": "Python",
-      "total_stars": "23,903",
+      "total_stars": "23,908",
       "stars_today": "1212"
     },
     {
@@ -28,7 +28,7 @@
       "url": "https://github.com/Yeachan-Heo/oh-my-codex",
       "description": "OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.",
       "language": "TypeScript",
-      "total_stars": "15,192",
+      "total_stars": "15,200",
       "stars_today": "1803"
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://github.com/siddharthvaddem/openscreen",
       "description": "Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.",
       "language": "TypeScript",
-      "total_stars": "19,136",
+      "total_stars": "19,138",
       "stars_today": "1600"
     },
     {
@@ -48,7 +48,7 @@
       "url": "https://github.com/telegramdesktop/tdesktop",
       "description": "Telegram Desktop messaging app",
       "language": "C++",
-      "total_stars": "30,741",
+      "total_stars": "30,743",
       "stars_today": "282"
     },
     {
@@ -58,7 +58,7 @@
       "url": "https://github.com/block/goose",
       "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
       "language": "Rust",
-      "total_stars": "35,431",
+      "total_stars": "35,435",
       "stars_today": "947"
     },
     {
@@ -68,7 +68,7 @@
       "url": "https://github.com/microsoft/agent-framework",
       "description": "A framework for building, orchestrating and deploying AI agents and multi-agent workflows with support for Python and .NET.",
       "language": "Python",
-      "total_stars": "8,594",
+      "total_stars": "8,596",
       "stars_today": "66"
     },
     {
@@ -78,30 +78,55 @@
       "url": "https://github.com/sherlock-project/sherlock",
       "description": "Hunt down social media accounts by username across social networks",
       "language": "Python",
-      "total_stars": "79,068",
+      "total_stars": "79,073",
       "stars_today": "993"
     }
   ],
   "descriptions": {
-    "siddharthvaddem/openscreen": {
-      "overview": "开源项目 openscreen 提供免费、无水印的精彩演示创建工具，适用于商业用途。",
-      "scenario": "用户需要制作高质量演示，但常常面临收费软件的订阅和水印问题，这限制了他们的创作自由。",
-      "solution": "openscreen 提供无水印的演示创建功能，完全免费且开源，支持商业使用，为用户提供灵活的创作选择。"
+    "Blaizzy/mlx-vlm": {
+      "overview": "MLX-VLM 是一个用于在 Mac 上进行视觉语言模型推理和微调的 Python 包。",
+      "scenario": "用户希望在 Mac 上高效地使用视觉语言模型进行图片与文本的理解与生成，但缺乏合适的工具和支持。",
+      "solution": "提供简单易用的接口，支持视觉语言模型的推理与微调，帮助用户快速实现图文任务。"
+    },
+    "onyx-dot-app/onyx": {
+      "overview": "Onyx是一个开源的AI平台，支持与各种大型语言模型（LLM）进行智能对话。",
+      "scenario": "用户在寻找高效的对话AI工具时，常常面临功能不足或不兼容的问题，导致无法充分利用LLM的能力。",
+      "solution": "Onyx提供先进的对话功能，兼容多种LLM，助力用户实现智能对话和更深层次的交互。"
     },
     "Yeachan-Heo/oh-my-codex": {
       "overview": "OmX - Oh My codeX 是一个开源的工具，旨在增强代码管理和协作体验。",
       "scenario": "开发者在项目中常常需要与团队协作，面对代码混乱、版本控制困难等问题，影响工作效率与代码质量。",
       "solution": "通过添加钩子、代理团队、HUD等功能，OmX 提供了灵活的代码管理和协作解决方案，提升开发效率。"
     },
-    "asgeirtj/system_prompts_leaks": {
-      "overview": "该项目提取了多个AI系统的提示信息，包括ChatGPT、Claude、Gemini等，定期更新。",
-      "scenario": "用户需要了解不同AI系统的提示内容以优化应用或进行研究，但获取这些信息较为困难，且更新不及时。",
-      "solution": "本项目提供了各大AI系统的系统提示提取，用户可以方便地获取和使用这些信息，支持多种AI模型。"
+    "siddharthvaddem/openscreen": {
+      "overview": "开源项目 openscreen 提供免费、无水印的精彩演示创建工具，适用于商业用途。",
+      "scenario": "用户需要制作高质量演示，但常常面临收费软件的订阅和水印问题，这限制了他们的创作自由。",
+      "solution": "openscreen 提供无水印的演示创建功能，完全免费且开源，支持商业使用，为用户提供灵活的创作选择。"
+    },
+    "telegramdesktop/tdesktop": {
+      "overview": "Telegram Desktop 是一款基于 Telegram 的桌面消息应用，支持多平台使用。",
+      "scenario": "用户在工作或学习时希望通过桌面应用方便地发送和接收消息，但手机操作不够便捷，切换应用影响效率。",
+      "solution": "提供实时消息同步、群组聊天、文件共享和多平台支持，提升用户沟通效率。"
+    },
+    "block/goose": {
+      "overview": "一个开源、可扩展的 AI 代理，超越代码建议，支持安装、执行、编辑和测试任意 LLM。",
+      "scenario": "开发者在编写代码时常常需要实时获取建议和测试功能，这个过程繁琐且耗时。用户希望能够更高效地与 AI 进行互动，提升开发效率。",
+      "solution": "提供完整的 AI 代理功能，支持代码的安装、执行、编辑和测试，简化开发流程。"
+    },
+    "microsoft/agent-framework": {
+      "overview": "一个用于构建、协调和部署AI代理及多代理工作流的框架，支持Python和.NET。",
+      "scenario": "用户需要管理多个AI代理进行复杂任务时，常面临协调和部署的挑战，导致效率低下和资源浪费。",
+      "solution": "提供简洁的API和工具，支持快速构建代理、灵活的工作流管理以及高效的部署方案，提升开发效率。"
     },
     "sherlock-project/sherlock": {
       "overview": "Sherlock 是一个用于根据用户名在社交网络上查找账户的开源工具。",
       "scenario": "用户希望找到某个用户名在多个社交平台上的账户，但手动搜索耗时且效率低下，容易遗漏。",
       "solution": "Sherlock 通过输入用户名自动查询多个社交网络，快速汇总结果，节省时间并提高准确性。"
+    },
+    "asgeirtj/system_prompts_leaks": {
+      "overview": "该项目提取了多个AI系统的提示信息，包括ChatGPT、Claude、Gemini等，定期更新。",
+      "scenario": "用户需要了解不同AI系统的提示内容以优化应用或进行研究，但获取这些信息较为困难，且更新不及时。",
+      "solution": "本项目提供了各大AI系统的系统提示提取，用户可以方便地获取和使用这些信息，支持多种AI模型。"
     },
     "anthropics/claude-code": {
       "overview": "Claude Code 是一款终端中的智能编码工具，帮助开发者提高编码效率。",
@@ -422,31 +447,6 @@
       "overview": "轻量级 PowerShell 脚本，移除 Windows 预装应用、禁用遥测、自定义系统。",
       "scenario": "新装的 Windows 有太多预装软件和广告，想清理干净。",
       "solution": "一键脚本，支持 Windows 10 和 11，可自定义清理选项。"
-    },
-    "Blaizzy/mlx-vlm": {
-      "overview": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX.",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
-    },
-    "onyx-dot-app/onyx": {
-      "overview": "Open Source AI Platform - AI Chat with advanced features that works with every LLM",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
-    },
-    "telegramdesktop/tdesktop": {
-      "overview": "Telegram Desktop messaging app",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
-    },
-    "block/goose": {
-      "overview": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
-    },
-    "microsoft/agent-framework": {
-      "overview": "A framework for building, orchestrating and deploying AI agents and multi-agent workflows with support for Python and .NET.",
-      "scenario": "当前面临的具体痛点：用户需要解决什么问题，遇到什么困难。",
-      "solution": "从以下几个方面提供解决方案：1) 核心功能实现 2) 性能优化 3) 易用性改进。"
     }
   }
 }
